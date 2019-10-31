@@ -23,7 +23,7 @@ foreach ($twigFolders as $twigFolder) {
     foreach ($twigFiles as $twigFile) {
         if (!file_exists($twigFile)) {
             printf(
-                "Configured twig cache file '%s' not found%s",
+                "Generated twig cache file '%s' not found%s",
                 $twigFile,
                 PHP_EOL
             );
@@ -38,7 +38,7 @@ foreach ($twigFolders as $twigFolder) {
             exit(1);
         }
         printf(
-            "Removed configured twig cache file '%s'%s",
+            "Removed generated twig cache file '%s'%s",
             $twigFile,
             PHP_EOL
         );
@@ -53,7 +53,7 @@ foreach ($twigFolders as $twigFolder) {
     }
 
     printf(
-        "Removed configured twig cache folder '%s'%s",
+        "Removed generated twig cache folder '%s'%s",
         $twigFolder,
         PHP_EOL
     );
