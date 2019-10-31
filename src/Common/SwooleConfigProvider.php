@@ -1,28 +1,29 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Reformo\Common;
 
 use Psr\Http\Message\ServerRequestInterface;
+use Reformo\Common\Commands\Swoole;
 use Swoole\Http\Server as SwooleHttpServer;
 use Zend\Expressive\Swoole\HotCodeReload\FileWatcher\InotifyFileWatcher;
 use Zend\Expressive\Swoole\HotCodeReload\FileWatcherInterface;
 use Zend\Expressive\Swoole\HotCodeReload\Reloader;
 use Zend\Expressive\Swoole\HotCodeReload\ReloaderFactory;
-use Zend\HttpHandlerRunner\RequestHandlerRunner;
-use Reformo\Common\Commands\Swoole;
+use Zend\Expressive\Swoole\HttpServerFactory;
 use Zend\Expressive\Swoole\Log;
 use Zend\Expressive\Swoole\PidManager;
 use Zend\Expressive\Swoole\PidManagerFactory;
-use Zend\Expressive\Swoole\SwooleRequestHandlerRunner;
-use Zend\Expressive\Swoole\SwooleRequestHandlerRunnerFactory;
+use Zend\Expressive\Swoole\ServerRequestSwooleFactory;
 use Zend\Expressive\Swoole\StaticResourceHandler;
 use Zend\Expressive\Swoole\StaticResourceHandlerFactory;
-use Zend\Expressive\Swoole\ServerRequestSwooleFactory;
-use Zend\Expressive\Swoole\HttpServerFactory;
 use Zend\Expressive\Swoole\StaticResourceHandlerInterface;
+use Zend\Expressive\Swoole\SwooleRequestHandlerRunner;
+use Zend\Expressive\Swoole\SwooleRequestHandlerRunnerFactory;
 use Zend\Expressive\Swoole\WhoopsPrettyPageHandlerDelegator;
-
+use Zend\HttpHandlerRunner\RequestHandlerRunner;
+use const PHP_SAPI;
 use function extension_loaded;
 
 class SwooleConfigProvider
@@ -56,9 +57,7 @@ class SwooleConfigProvider
                     // and set a production value to match.
                     'max_conn' => 1024,
                 ],
-                'static-files' => [
-                    'enable' => false
-                ],
+                'static-files' => ['enable' => false],
             ],
         ];
     }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Application\User\Command;
+namespace Reformo\Domain\User\Command;
 
 class RegisterUserHandler
 {

@@ -24,28 +24,27 @@ class ConfigProvider
     public function __invoke() : array
     {
         return [
-            'dependencies' => $this->getDependencies()
+            'dependencies' => $this->getDependencies(),
         ];
     }
+
     public function registerRoutes(Application $app, MiddlewareFactory $factory) : void
     {
         $app->get('/', Handler\PingHandler::class, 'root');
         $app->get('/error', Handler\PingErrorHandler::class, 'error');
     }
+
     /**
      * Returns the container dependencies
      */
     public function getDependencies() : array
     {
         return [
-            'invokables' => [
-            ],
+            'invokables' => [],
             'factories'  => [
                 Handler\PingHandler::class => RequestHandlerFactory::class,
                 Handler\PingErrorHandler::class => RequestHandlerFactory::class,
             ],
         ];
     }
-
-
 }

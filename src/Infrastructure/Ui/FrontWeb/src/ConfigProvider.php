@@ -15,8 +15,6 @@ use Zend\Expressive\MiddlewareFactory;
  */
 class ConfigProvider
 {
-    public const CACHE_ENABLED = true;
-
     /**
      * Returns the configuration array
      *

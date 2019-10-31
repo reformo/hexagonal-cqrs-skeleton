@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Reformo\Common\Commands\Swoole;
@@ -11,10 +12,11 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Zend\Expressive\Application;
 use Zend\Expressive\MiddlewareFactory;
-use Zend\Expressive\Swoole\PidManager;
 use Zend\Expressive\Swoole\Command\IsRunningTrait;
-
+use Zend\Expressive\Swoole\PidManager;
 use function file_exists;
+use function sys_get_temp_dir;
+use function var_dump;
 
 class StartCommand extends Command
 {
@@ -36,13 +38,9 @@ EOH;
         'routes.php',
     ];
 
-    /**
-     * @var ContainerInterface
-     */
+    /** @var ContainerInterface */
     private $container;
-    /**
-     * @var PidManager
-     */
+    /** @var PidManager */
     private $pidManager;
 
     public function __construct(ContainerInterface $container, string $name = 'start')
@@ -79,26 +77,27 @@ EOH;
 
     protected function execute(InputInterface $input, OutputInterface $output) : int
     {
-        $config = $this->container->get('config');
+        $config           = $this->container->get('config');
         $this->pidManager = new PidManager($config['zend-expressive-swoole']['swoole-http-server']['options']['pid_file']
             ?? sys_get_temp_dir() . '/zend-swoole.pid');
         if ($this->isRunning()) {
             $output->writeln('<error>Server is already running!</error>');
+
             return 1;
         }
-        $daemonize     = $input->getOption('daemonize');
-        $numWorkers    = $input->getOption('num-workers');
-        $module         = $input->getOption('module');
+        $daemonize  = $input->getOption('daemonize');
+        $numWorkers = $input->getOption('num-workers');
+        $module     = $input->getOption('module');
         var_dump($numWorkers);
         $serverOptions = [];
         if ($daemonize) {
             $serverOptions['daemonize'] = $daemonize;
         }
-        if (null !== $numWorkers) {
+        if ($numWorkers !== null) {
             $serverOptions['worker_num'] = $numWorkers;
         }
 
-        if ([] !== $serverOptions) {
+        if ($serverOptions !== []) {
             $server = $this->container->get(SwooleHttpServer::class);
             $server->set($serverOptions);
         }
@@ -112,10 +111,12 @@ EOH;
         // Execute programmatic/declarative middleware pipeline and routing
         // configuration statements, if they exist
         foreach (self::PROGRAMMATIC_CONFIG_FILES as $configFile) {
-            $configFile = 'modules/'. $module . '/config/' . $configFile;
-            if (file_exists($configFile)) {
-                (require $configFile)($app, $factory, $this->container);
+            $configFile = 'modules/' . $module . '/config/' . $configFile;
+            if (! file_exists($configFile)) {
+                continue;
             }
+
+            (require $configFile)($app, $factory, $this->container);
         }
 
         // Run the application

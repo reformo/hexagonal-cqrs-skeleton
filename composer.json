@@ -36,19 +36,20 @@
         }
     },
     "support": {
-        "issues": "https://github.com/zendframework/zend-expressive-skeleton/issues",
-        "source": "https://github.com/zendframework/zend-expressive-skeleton",
-        "rss": "https://github.com/zendframework/zend-expressive-skeleton/releases.atom",
-        "slack": "https://zendframework-slack.herokuapp.com",
-        "forum": "https://discourse.zendframework.com/c/questions/expressive"
+        "issues": "https://github.com/reformo/hexagonal-cqrs-skeleton/issues",
+        "source": "https://github.com/reformo/hexagonal-cqrs-skeleton",
+        "rss": "https://github.com/reformo/hexagonal-cqrs-skeleton/releases.atom"
     },
     "require": {
         "php": "^7.3",
+        "ext-json": "*",
         "doctrine/dbal": "^2.9",
         "league/tactician": "~2.0-rc1",
+        "ramsey/uuid": "^3.8",
         "selami/console": "^1.0",
         "selami/stdlib": "^1.8",
         "vlucas/phpdotenv": "^3.6",
+        "webmozart/assert": "^1.5",
         "zendframework/zend-component-installer": "^2.1.1",
         "zendframework/zend-config-aggregator": "^1.0",
         "zendframework/zend-diactoros": "^1.7.1 || ^2.0",
@@ -66,6 +67,7 @@
         "filp/whoops": "^2.1.12",
         "phpunit/phpunit": "^7.0.1",
         "roave/security-advisories": "dev-master",
+        "rskuipers/php-assumptions": "^0.8.0",
         "squizlabs/php_codesniffer": "^3.5",
         "swoole/ide-helper": "^4.4",
         "zendframework/zend-expressive-tooling": "^1.0",
@@ -74,7 +76,8 @@
     "autoload": {
         "psr-4": {
             "Reformo\\Common\\": "src/Common/",
-            "Reformo\\Application\\": "src/Application/",
+            "Reformo\\Domain\\": "src/Domain/",
+            "Reformo\\Infrastructure\\": "src/Infrastructure/",
             "Reformo\\FrontWeb\\": "src/Infrastructure/Ui/FrontWeb/src/",
             "Reformo\\PrivateApi\\": "src/Infrastructure/Ui/PrivateApi/src/"
         }
@@ -94,6 +97,7 @@
         "expressive": "expressive --ansi",
         "check": [
             "@cs-check",
+            "@check-assumptions",
             "@test"
         ],
         "clear-config-cache": "php bin/clear-config-cache.php",
@@ -104,8 +108,9 @@
             "@clear-route-cache",
             "@clear-twig-cache"
         ],
-        "cs-check": "phpcs --standard=Doctrine",
-        "cs-fix": "phpcbf --standard=Doctrine",
+        "cs-check": "vendor/bin/phpcs --standard=Doctrine",
+        "cs-fix": "vendor/bin/phpcbf --standard=Doctrine",
+        "check-assumptions": "vendor/bin/phpa",
         "serve-frontweb": "php -S 0.0.0.0:8080 -t modules/FrontWeb/public",
         "serve-private-api": "php -S 0.0.0.0:8081 -t modules/PrivateApi/public",
         "test": "phpunit --colors=always",

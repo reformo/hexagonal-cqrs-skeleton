@@ -8,7 +8,7 @@ use League\Tactician\CommandBus;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Reformo\Application\User\Command\RegisterUser;
+use Reformo\Domain\User\Query\GetAllUsers;
 use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Expressive\Template\TemplateRendererInterface;
 
@@ -31,9 +31,7 @@ class HomePageHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
-        $command               = new RegisterUser();
-        $command->emailAddress = 'alice@example.com';
-        $command->password     = 'secret';
+        $command               = new GetAllUsers(0, 25);
         $data                  = [];
         $data['containerName'] = 'Zend Servicemanager';
         $data['containerDocs'] = 'https://docs.zendframework.com/zend-servicemanager/';
@@ -41,7 +39,7 @@ class HomePageHandler implements RequestHandlerInterface
         $data['routerDocs']    = 'https://github.com/nikic/FastRoute';
         $data['templateName']  = 'Twig';
         $data['templateDocs']  = 'http://twig.sensiolabs.org/documentation';
-        $data['command']       = $this->commandBus->handle($command);
+        $data['users']         = $this->commandBus->handle($command);
 
         return new HtmlResponse($this->template->render('app::home-page', $data));
     }

@@ -1,23 +1,19 @@
 <?php
 /**
  * @see       https://github.com/zendframework/zend-expressive-swoole for the canonical source repository
- * @copyright Copyright (c) 2018 Zend Technologies USA Inc. (https://www.zend.com)
- * @license   https://github.com/zendframework/zend-expressive-swoole/blob/master/LICENSE.md New BSD License
  */
 
 declare(strict_types=1);
 
 namespace Reformo\Common\Commands\Swoole;
 
-use Zend\Expressive\Swoole\Command\IsRunningTrait;
-
 use Closure;
 use Swoole\Process as SwooleProcess;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Zend\Expressive\Swoole\Command\IsRunningTrait;
 use Zend\Expressive\Swoole\PidManager;
-
 use function time;
 use function usleep;
 
@@ -34,6 +30,7 @@ EOH;
 
     /**
      * @internal
+     *
      * @var Closure Callable to execute when attempting to kill the server
      *     process. Generally speaking, this is SwooleProcess::kill; only
      *     change the value when testing.
@@ -42,20 +39,19 @@ EOH;
 
     /**
      * @internal
+     *
      * @var int How long to wait for the server process to end. Only change
      *     the value when testing.
      */
     public $waitThreshold = 60;
 
-    /**
-     * @var PidManager
-     */
+    /** @var PidManager */
     private $pidManager;
 
     public function __construct(PidManager $pidManager, string $name = 'stop')
     {
         $this->killProcess = Closure::fromCallable([SwooleProcess::class, 'kill']);
-        $this->pidManager = $pidManager;
+        $this->pidManager  = $pidManager;
         parent::__construct($name);
     }
 
@@ -69,6 +65,7 @@ EOH;
     {
         if (! $this->isRunning()) {
             $output->writeln('<info>Server is not running</info>');
+
             return 0;
         }
 
@@ -76,18 +73,20 @@ EOH;
 
         if (! $this->stopServer()) {
             $output->writeln('<error>Error stopping server; check logs for details</error>');
+
             return 1;
         }
 
         $output->writeln('<info>Server stopped</info>');
+
         return 0;
     }
 
     private function stopServer() : bool
     {
-        [$masterPid, ] = $this->pidManager->read();
-        $startTime     = time();
-        $result        = ($this->killProcess)((int) $masterPid);
+        [$masterPid ] = $this->pidManager->read();
+        $startTime    = time();
+        $result       = ($this->killProcess)((int) $masterPid);
 
         while (! $result) {
             if (! ($this->killProcess)((int) $masterPid, 0)) {

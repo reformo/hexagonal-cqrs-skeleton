@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Reformo\PrivateApi\Handler;
 
+use League\Tactician\CommandBus;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use League\Tactician\CommandBus;
-use Reformo\Application\User\Command\RegisterUser;
+use Reformo\Domain\User\Command\RegisterUser;
 use Zend\Diactoros\Response\JsonResponse;
 
 class PingHandler implements RequestHandlerInterface
@@ -33,7 +33,7 @@ class PingHandler implements RequestHandlerInterface
         return new JsonResponse([
             'welcome' => 'Congratulations! You have installed the zend-expressive skeleton application.',
             'docsUrl' => 'https://docs.zendframework.com/zend-expressive/',
-            'command' => $this->commandBus->handle($command)
+            'command' => $this->commandBus->handle($command),
         ]);
     }
 }

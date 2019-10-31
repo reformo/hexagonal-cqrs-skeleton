@@ -1,0 +1,11 @@
+<?php
+declare(strict_types=1);
+
+
+return [
+    'doctrine' => [
+        'dbname' => 'reformo',
+        'path' => 'data/db.sqlite',
+        'driver' => 'pdo_sqlite',
+    ]
+];

@@ -1,8 +1,6 @@
 <?php
 /**
  * @see       https://github.com/zendframework/zend-expressive-swoole for the canonical source repository
- * @copyright Copyright (c) 2018 Zend Technologies USA Inc. (https://www.zend.com)
- * @license   https://github.com/zendframework/zend-expressive-swoole/blob/master/LICENSE.md New BSD License
  */
 
 declare(strict_types=1);
@@ -14,10 +12,8 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-
-use function sleep;
-
 use const SWOOLE_PROCESS;
+use function sleep;
 
 class ReloadCommand extends Command
 {
@@ -30,9 +26,7 @@ This command is only relevant when the server was started using the
 configuration value is set to SWOOLE_PROCESS.
 EOH;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     private $serverMode;
 
     public function __construct(int $serverMode, string $name = 'reload')
@@ -60,6 +54,7 @@ EOH;
                 '<error>Server is not configured to run in SWOOLE_PROCESS mode;'
                 . ' cannot reload</error>'
             );
+
             return 1;
         }
 
@@ -68,12 +63,11 @@ EOH;
         $application = $this->getApplication();
 
         $stop   = $application->find('stop');
-        $result = $stop->run(new ArrayInput([
-            'command' => 'stop',
-        ]), $output);
+        $result = $stop->run(new ArrayInput(['command' => 'stop']), $output);
 
-        if (0 !== $result) {
+        if ($result !== 0) {
             $output->writeln('<error>Cannot reload server: unable to stop current server</error>');
+
             return $result;
         }
 
@@ -92,8 +86,9 @@ EOH;
             '--num-workers' => $input->getOption('num-workers') ?? StartCommand::DEFAULT_NUM_WORKERS,
         ]), $output);
 
-        if (0 !== $result) {
+        if ($result !== 0) {
             $output->writeln('<error>Cannot reload server: unable to start server</error>');
+
             return $result;
         }
 
