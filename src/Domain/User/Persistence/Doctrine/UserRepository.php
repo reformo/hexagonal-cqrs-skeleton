@@ -6,11 +6,11 @@ namespace Reformo\Domain\User\Persistence\Doctrine;
 use Reformo\Domain\User\Interfaces\UserId;
 use Reformo\Domain\User\Interfaces\UserRepository as UserRepositoryInterface;
 use Doctrine\DBAL\Connection;
-use Reformo\Domain\User\Persistence\Doctrine\FetchObject\Users;
 use Reformo\Domain\User\Persistence\Doctrine\Query\AddUser;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetAllUsers;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetUserById;
 use Reformo\Domain\User\Model\User;
+use Reformo\Domain\User\Model\UsersCollection;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -31,7 +31,7 @@ class UserRepository implements UserRepositoryInterface
     {
         return AddUser::execute($this->connection, $user) > 0;
     }
-    public function getAllUsersPaginated(int $offset, int $limit) : Users
+    public function getAllUsersPaginated(int $offset, int $limit) : UsersCollection
     {
         return GetAllUsers::execute($this->connection, ['offset' => $offset, 'limit' => $limit]);
     }

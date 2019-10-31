@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Reformo\Domain\User\Query;
 
 use Reformo\Domain\User\Interfaces\UserRepository;
-use Reformo\Domain\User\Persistence\Doctrine\FetchObject\Users;
+use Reformo\Domain\User\Model\UsersCollection;
 
 class GetAllUsersHandler
 {
@@ -18,9 +18,9 @@ class GetAllUsersHandler
 
     /**
      * @param GetAllUsers $command
-     * @return Users
+     * @return UsersCollection
      */
-    public function __invoke(GetAllUsers $command) : Users
+    public function __invoke(GetAllUsers $command) : UsersCollection
     {
         return $this->repository->getAllUsersPaginated($command->offset(), $command->limit());
     }

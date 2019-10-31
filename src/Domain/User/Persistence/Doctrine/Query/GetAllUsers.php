@@ -10,7 +10,7 @@ use Reformo\Common\Exception\InvalidParameter;
 use Reformo\Common\Query;
 use Reformo\Domain\User\Persistence\Doctrine\FetchObject\User as UserFetchObject;
 use Reformo\Domain\User\Model\User;
-use Reformo\Domain\User\Persistence\Doctrine\FetchObject\Users;
+use Reformo\Domain\User\Model\UsersCollection;
 
 final class GetAllUsers
 {
@@ -22,7 +22,7 @@ final class GetAllUsers
          LIMIT :offset, :limit
 SQL;
 
-    public static function execute(Connection $connection, array $parameters) : ? Users
+    public static function execute(Connection $connection, array $parameters) : ? UsersCollection
     {
         if (!array_key_exists('offset', $parameters)) {
             throw InvalidParameter::create('Query needs parameter named: offset');
@@ -33,7 +33,7 @@ SQL;
         $query = new static($connection);
         $statement = $query->executeQuery(self::$sql, $parameters);
         try {
-            $users = new Users();
+            $users = new UsersCollection();
             $records = $statement->fetchAll(FetchMode::CUSTOM_OBJECT, UserFetchObject::class);
             foreach ($records as $item) {
                 $user = User::create($item->id, $item->email, $item->firstName, $item->lastName, $item->createdAt);
