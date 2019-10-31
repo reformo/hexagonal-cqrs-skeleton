@@ -1,0 +1,114 @@
+{
+    "name": "reformo/hexagonal-cqrs-skeleton",
+    "description": "Hexagonal (Ports and Adapters) Architecture and CQRS Ready Zend Expressive Skeleton!",
+    "type": "project",
+    "homepage": "https://github.com/reformo/hexagonal-cqrs-skeleton",
+    "license": "MIT",
+    "keywords": [
+        "skeleton",
+        "middleware",
+        "psr",
+        "psr-7",
+        "psr-11",
+        "psr-15",
+        "zf",
+        "zendframework",
+        "zend-expressive",
+        "cqrs",
+        "hexagonal",
+        "tactician",
+        "commandbus",
+        "doctrine"
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "zf": {
+            "component-whitelist": [
+                "zendframework/zend-expressive",
+                "zendframework/zend-expressive-helpers",
+                "zendframework/zend-expressive-router",
+                "zendframework/zend-httphandlerrunner",
+                "zendframework/zend-expressive-fastroute",
+                "zendframework/zend-expressive-twigrenderer"
+            ]
+        }
+    },
+    "support": {
+        "issues": "https://github.com/zendframework/zend-expressive-skeleton/issues",
+        "source": "https://github.com/zendframework/zend-expressive-skeleton",
+        "rss": "https://github.com/zendframework/zend-expressive-skeleton/releases.atom",
+        "slack": "https://zendframework-slack.herokuapp.com",
+        "forum": "https://discourse.zendframework.com/c/questions/expressive"
+    },
+    "require": {
+        "php": "^7.3",
+        "doctrine/dbal": "^2.9",
+        "league/tactician": "~2.0-rc1",
+        "selami/console": "^1.0",
+        "selami/stdlib": "^1.8",
+        "vlucas/phpdotenv": "^3.6",
+        "zendframework/zend-component-installer": "^2.1.1",
+        "zendframework/zend-config-aggregator": "^1.0",
+        "zendframework/zend-diactoros": "^1.7.1 || ^2.0",
+        "zendframework/zend-expressive": "^3.0.1",
+        "zendframework/zend-expressive-fastroute": "^3.0",
+        "zendframework/zend-expressive-helpers": "^5.0",
+        "zendframework/zend-expressive-swoole": "^2.4",
+        "zendframework/zend-expressive-twigrenderer": "^2.0",
+        "zendframework/zend-problem-details": "^1.0",
+        "zendframework/zend-servicemanager": "^3.3",
+        "zendframework/zend-stdlib": "^3.1"
+    },
+    "require-dev": {
+        "doctrine/coding-standard": "^6.0",
+        "filp/whoops": "^2.1.12",
+        "phpunit/phpunit": "^7.0.1",
+        "roave/security-advisories": "dev-master",
+        "squizlabs/php_codesniffer": "^3.5",
+        "swoole/ide-helper": "^4.4",
+        "zendframework/zend-expressive-tooling": "^1.0",
+        "zfcampus/zf-development-mode": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Reformo\\Common\\": "src/Common/",
+            "Reformo\\Application\\": "src/Application/",
+            "Reformo\\FrontWeb\\": "src/Infrastructure/Ui/FrontWeb/src/",
+            "Reformo\\PrivateApi\\": "src/Infrastructure/Ui/PrivateApi/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AppTest\\": "test/AppTest/"
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "@development-enable"
+        ],
+        "development-disable": "zf-development-mode disable",
+        "development-enable": "zf-development-mode enable",
+        "development-status": "zf-development-mode status",
+        "expressive": "expressive --ansi",
+        "check": [
+            "@cs-check",
+            "@test"
+        ],
+        "clear-config-cache": "php bin/clear-config-cache.php",
+        "clear-route-cache": "php bin/clear-route-cache.php",
+        "clear-twig-cache": "php bin/clear-twig-cache.php",
+        "clear-cache-files" : [
+            "@clear-config-cache",
+            "@clear-route-cache",
+            "@clear-twig-cache"
+        ],
+        "cs-check": "phpcs --standard=Doctrine",
+        "cs-fix": "phpcbf --standard=Doctrine",
+        "serve-frontweb": "php -S 0.0.0.0:8080 -t modules/FrontWeb/public",
+        "serve-private-api": "php -S 0.0.0.0:8081 -t modules/PrivateApi/public",
+        "test": "phpunit --colors=always",
+        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
+    }
+}
