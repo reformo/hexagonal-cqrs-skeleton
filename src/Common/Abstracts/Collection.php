@@ -60,6 +60,7 @@ abstract class Collection implements Iterator, JsonSerializable
         foreach ($this->items as $item) {
             $data[] = $item->toArray();
         }
+
         return $data;
     }
 

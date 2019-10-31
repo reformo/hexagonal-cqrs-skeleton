@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Reformo\Domain\User\Model;
 
+use DateTimeImmutable;
 use Reformo\Common\Interfaces\Email as EmailInterface;
 use Reformo\Common\ValueObject\Email;
-use Reformo\Domain\User\Interfaces\UserId as UserIdInterface;
-use Webmozart\Assert\Assert;
 use Reformo\Domain\User\Exception\InvalidFirstName;
-use DateTimeImmutable;
+use Reformo\Domain\User\Interfaces\UserId as UserIdInterface;
+use Throwable;
+use Webmozart\Assert\Assert;
 
 class User
 {
@@ -28,10 +29,10 @@ class User
         string $lastName,
         DateTimeImmutable $createdAt
     ) {
-        $this->id = $id;
-        $this->email = $email;
+        $this->id        = $id;
+        $this->email     = $email;
         $this->firstName = $firstName;
-        $this->lastName = $lastName;
+        $this->lastName  = $lastName;
         $this->createdAt = $createdAt;
     }
 
@@ -39,14 +40,15 @@ class User
     {
         try {
             Assert::minLength($firstName, 2, 'First name must be at least 2 characters long');
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
             throw InvalidFirstName::create($exception->getMessage());
         }
         try {
             Assert::minLength($lastName, 2, 'Last name must be at least 2 characters long');
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
             throw InvalidFirstName::create($exception->getMessage());
         }
+
         return new self(
             UserId::createFromString($uuid),
             Email::createFromString($email),

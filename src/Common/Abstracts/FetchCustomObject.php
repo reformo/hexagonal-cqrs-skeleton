@@ -61,6 +61,7 @@ trait FetchCustomObject
         foreach ($objectVars as $key => $value) {
             $propertiesAsAnArray[CaseConverter::toSnakeCase($key)] = $value;
         }
+
         return $propertiesAsAnArray;
     }
 

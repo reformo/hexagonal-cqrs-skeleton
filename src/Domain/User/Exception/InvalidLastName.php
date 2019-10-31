@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Reformo\Domain\User\Exception;
 
-use Zend\ProblemDetails\Exception\ProblemDetailsExceptionInterface;
-use Reformo\Domain\DomainException;
 use Exception;
+use Reformo\Domain\DomainException;
+use Zend\ProblemDetails\Exception\ProblemDetailsExceptionInterface;
 
 class InvalidLastName extends Exception implements ProblemDetailsExceptionInterface
 {

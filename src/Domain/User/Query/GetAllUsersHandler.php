@@ -16,10 +16,6 @@ class GetAllUsersHandler
         $this->repository = $repository;
     }
 
-    /**
-     * @param GetAllUsers $command
-     * @return UsersCollection
-     */
     public function __invoke(GetAllUsers $command) : UsersCollection
     {
         return $this->repository->getAllUsersPaginated($command->offset(), $command->limit());

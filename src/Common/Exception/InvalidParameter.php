@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Reformo\Common\Exception;
 
-use Zend\ProblemDetails\Exception\ProblemDetailsExceptionInterface;
-use Reformo\Domain\DomainException;
 use Exception;
+use Reformo\Domain\DomainException;
+use Zend\ProblemDetails\Exception\ProblemDetailsExceptionInterface;
 
 class InvalidParameter extends Exception implements ProblemDetailsExceptionInterface
 {
