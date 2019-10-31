@@ -1,4 +1,5 @@
-# Hexagonal (Ports and Adapters) Architecture and CQRS Ready Zend Expressive Skeleton.
+# WORK IN PROGRESS
+#Hexagonal (Ports and Adapters) Architecture and CQRS Ready Zend Expressive Skeleton.
 
 
 An opinionated framework to develop CQRS applications using hexagonal architecture structure.
