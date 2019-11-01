@@ -88,7 +88,6 @@ EOH;
         $daemonize  = $input->getOption('daemonize');
         $numWorkers = $input->getOption('num-workers');
         $module     = $input->getOption('module');
-        var_dump($numWorkers);
         $serverOptions = [];
         if ($daemonize) {
             $serverOptions['daemonize'] = $daemonize;
