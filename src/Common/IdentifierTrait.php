@@ -6,8 +6,8 @@ namespace Reformo\Common;
 
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
-use Webmozart\Assert\Assert;
 use Reformo\Common\Interfaces\Identifier;
+use Webmozart\Assert\Assert;
 
 trait IdentifierTrait
 {
@@ -21,6 +21,7 @@ trait IdentifierTrait
     public static function createFromString(string $uuid) : Identifier
     {
         Assert::uuid($uuid, 'Invalid uuid provided!');
+
         return new self(Uuid::fromString($uuid));
     }
 

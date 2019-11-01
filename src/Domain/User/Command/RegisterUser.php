@@ -14,15 +14,16 @@ class RegisterUser
     public function __construct(string $uuid, string $firstName, string $lastName, string $email)
     {
         $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->email = $email;
-        $this->id = $uuid;
+        $this->lastName  = $lastName;
+        $this->email     = $email;
+        $this->id        = $uuid;
     }
 
     public function id()
     {
         return $this->id;
     }
+
     public function firstName()
     {
         return $this->firstName;

@@ -48,6 +48,7 @@ class User
         } catch (Throwable $exception) {
             throw InvalidFirstName::create($exception->getMessage());
         }
+
         return new self(
             UserId::createFromString($uuid),
             Email::createFromString($email),

@@ -14,6 +14,8 @@ use Reformo\Domain\User\Model\User;
 use Reformo\Domain\User\Persistence\Doctrine\FetchObject\User as UserFetchObject;
 use Throwable;
 use function array_key_exists;
+use function count;
+use function sprintf;
 
 final class GetUserById
 {
@@ -38,6 +40,7 @@ SQL;
                 throw UserNotFound::create(sprintf('User not found by id: %s', $parameters['id']));
             }
             $item = $records[0];
+
             return User::create($item->id, $item->email, $item->firstName, $item->lastName, $item->createdAt);
         } catch (Throwable $exception) {
             throw ExecutionFailed::create($exception->getMessage());

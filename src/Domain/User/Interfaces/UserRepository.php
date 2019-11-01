@@ -12,7 +12,10 @@ use Reformo\Domain\User\Model\UsersCollection;
 interface UserRepository
 {
     public function getUserById(UserIdInterface $id) : ?User;
+
     public function getUserByEmail(Email $email) : ?User;
+
     public function add(User $user) : bool;
+
     public function getAllUsersPaginated(int $offset, int $limit) : UsersCollection;
 }

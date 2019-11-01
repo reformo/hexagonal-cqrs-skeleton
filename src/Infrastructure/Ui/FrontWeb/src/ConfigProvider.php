@@ -44,7 +44,7 @@ class ConfigProvider
             'invokables' => [],
             'factories'  => [
                 Handler\HomePageHandler::class => RequestHandlerFactory::class,
-                Handler\AddUserHandler::class => RequestHandlerFactory::class
+                Handler\AddUserHandler::class => RequestHandlerFactory::class,
             ],
         ];
     }

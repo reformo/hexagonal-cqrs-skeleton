@@ -6,16 +6,17 @@ namespace Reformo\Domain\User\Persistence\Doctrine;
 
 use Doctrine\DBAL\Connection;
 use Reformo\Common\Interfaces\Email;
-use Reformo\Domain\User\Exception\UserNotFound;
 use Reformo\Domain\User\Exception\UserAlreadyExists;
+use Reformo\Domain\User\Exception\UserNotFound;
 use Reformo\Domain\User\Interfaces\UserId;
 use Reformo\Domain\User\Interfaces\UserRepository as UserRepositoryInterface;
 use Reformo\Domain\User\Model\User;
 use Reformo\Domain\User\Model\UsersCollection;
 use Reformo\Domain\User\Persistence\Doctrine\Query\AddUser;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetAllUsers;
-use Reformo\Domain\User\Persistence\Doctrine\Query\GetUserById;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetUserByEmail;
+use Reformo\Domain\User\Persistence\Doctrine\Query\GetUserById;
+use function sprintf;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -31,10 +32,12 @@ class UserRepository implements UserRepositoryInterface
     {
         return GetUserById::execute($this->connection, ['userId' => $userId->toString()]);
     }
+
     public function getUserByEmail(Email $email) : ?User
     {
         return GetUserByEmail::execute($this->connection, ['email' => $email->toString()]);
     }
+
     public function add(User $user) : bool
     {
         try {

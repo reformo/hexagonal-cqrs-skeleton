@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Reformo\Domain\User\Command;
 
-use Ramsey\Uuid\Uuid;
+use DateTimeImmutable;
 use Reformo\Domain\User\Interfaces\UserRepository;
 use Reformo\Domain\User\Model\User;
 
@@ -19,8 +19,8 @@ class RegisterUserHandler
 
     public function __invoke(RegisterUser $command) : void
     {
-        $dateTime = (new \DateTimeImmutable('now'))->format(User::CREATED_AT_FORMAT);
-        $user = User::create(
+        $dateTime = (new DateTimeImmutable('now'))->format(User::CREATED_AT_FORMAT);
+        $user     = User::create(
             $command->id(),
             $command->email(),
             $command->firstName(),
