@@ -48,13 +48,12 @@ class User
         } catch (Throwable $exception) {
             throw InvalidFirstName::create($exception->getMessage());
         }
-
         return new self(
             UserId::createFromString($uuid),
             Email::createFromString($email),
             $firstName,
             $lastName,
-            DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $createdAt)
+            DateTimeImmutable::createFromFormat(self::CREATED_AT_FORMAT, $createdAt)
         );
     }
 
@@ -80,6 +79,6 @@ class User
 
     public function createdAt() : DateTimeImmutable
     {
-        return $this->createdAt();
+        return $this->createdAt;
     }
 }

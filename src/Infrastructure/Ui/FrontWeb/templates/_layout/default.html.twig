@@ -4,8 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>{% block title %}{% endblock %} - zend-expressive</title>
-    <link rel="shortcut icon" href="https://framework.zend.com/ico/favicon.ico" />
+    <title>{% block title %}{% endblock %} - My App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet" />
     <style>
@@ -26,24 +25,11 @@
                     </button>
                     <!-- Brand -->
                     <a class="navbar-brand" href="{{ path('home') }}">
-                        <img src="https://framework.zend.com/images/logos/zf-logo-mark.png" alt="Zend Expressive" height="28" />
+                        My App
                     </a>
                 </div>
                 <!-- Links -->
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a href="https://docs.zendframework.com/zend-expressive" target="_blank" class="nav-link">
-                                <i class="fa fa-book"></i> Docs
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://github.com/zendframework/zend-expressive" target="_blank" class="nav-link">
-                                <i class="fa fa-wrench"></i> Contribute
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+
             </div>
         </nav>
     </header>
@@ -59,7 +45,7 @@
             <hr />
             {% block footer %}
                 <p>
-                    &copy; 2005 - {{ "now"|date("Y") }} by Zend Technologies Ltd. All rights reserved.
+                    &copy; {{ "now"|date("Y") }} by My Company. All rights reserved.
                 </p>
             {% endblock %}
         </div>

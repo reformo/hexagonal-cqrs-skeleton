@@ -32,6 +32,7 @@ class ConfigProvider
     public function registerRoutes(Application $app, MiddlewareFactory $factory) : void
     {
         $app->get('/', Handler\HomePageHandler::class, 'home');
+        $app->post('/users/add', Handler\AddUserHandler::class, 'users.add');
     }
 
     /**
@@ -43,6 +44,7 @@ class ConfigProvider
             'invokables' => [],
             'factories'  => [
                 Handler\HomePageHandler::class => RequestHandlerFactory::class,
+                Handler\AddUserHandler::class => RequestHandlerFactory::class
             ],
         ];
     }

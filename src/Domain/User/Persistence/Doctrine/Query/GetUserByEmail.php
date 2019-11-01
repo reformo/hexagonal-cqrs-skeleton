@@ -15,31 +15,35 @@ use Reformo\Domain\User\Persistence\Doctrine\FetchObject\User as UserFetchObject
 use Throwable;
 use function array_key_exists;
 
-final class GetUserById
+final class GetUserByEmail
 {
     use Query;
 
     private static $sql = <<<SQL
         SELECT *
           FROM users
-         WHERE id=:userId
+         WHERE email = :email
+         LIMIT 1
 SQL;
 
-    public static function execute(Connection $connection, array $parameters) : ?User
+    public static function execute(Connection $connection, array $parameters) : User
     {
-        if (! array_key_exists('userId', $parameters)) {
-            throw InvalidParameter::create('Query needs parameter named: userId');
+        if (! array_key_exists('email', $parameters)) {
+            throw InvalidParameter::create('Query needs parameter named: email');
         }
         $query     = new static($connection);
         $statement = $query->executeQuery(self::$sql, $parameters);
         try {
             $records = $statement->fetchAll(FetchMode::CUSTOM_OBJECT, UserFetchObject::class);
             if (count($records) === 0) {
-                throw UserNotFound::create(sprintf('User not found by id: %s', $parameters['id']));
+                throw UserNotFound::create(sprintf('User not found by email: %s', $parameters['email']));
             }
             $item = $records[0];
             return User::create($item->id, $item->email, $item->firstName, $item->lastName, $item->createdAt);
-        } catch (Throwable $exception) {
+        } catch (UserNotFound $exception) {
+            throw $exception;
+        }
+        catch (Throwable $exception) {
             throw ExecutionFailed::create($exception->getMessage());
         }
     }

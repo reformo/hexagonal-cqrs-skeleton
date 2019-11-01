@@ -18,9 +18,8 @@ final class AddUser
         if (! $user instanceof User) {
             throw InvalidParameter::create('Provided data is not a User object!');
         }
-        $query = new static($connection);
 
-        return $query->connection->insert('users', [
+        return $connection->insert('users', [
             'id' => $user->id()->toString(),
             'email' => $user->email()->toString(),
             'first_name' => $user->firstName(),
