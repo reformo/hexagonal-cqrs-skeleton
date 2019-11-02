@@ -13,7 +13,7 @@ class ExecutionFailed extends Exception implements ProblemDetailsExceptionInterf
     use DomainException;
 
     private const STATUS = 500;
-    private const CODE   = 'G-1001';
+    private const CODE   = 'G-1000';
     private const TYPE   = 'https://httpstatus.es/500';
     private const TITLE  = 'Execution failed.';
 }

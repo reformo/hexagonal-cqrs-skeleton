@@ -8,9 +8,9 @@ use League\Tactician\CommandBus;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Reformo\Domain\ExampleException;
+use Reformo\Common\Exception\InvalidParameter;
 
-class PingErrorHandler implements RequestHandlerInterface
+class ApiErrorHandler implements RequestHandlerInterface
 {
     private $config;
     private $commandBus;
@@ -25,6 +25,6 @@ class PingErrorHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
-        throw ExampleException::create(['code' => 'AD-1224']);
+        throw InvalidParameter::create('Invalid input', ['code' => 'AD-1224']);
     }
 }

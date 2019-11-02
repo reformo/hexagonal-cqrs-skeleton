@@ -2,8 +2,8 @@
 declare(strict_types=1);
 
 use Reformo\Common\Factory\CommandHandlerFactory;
-use Reformo\Domain\User\Command\RegisterUserHandler;
 use Reformo\Domain\User\Query\GetAllUsersHandler;
+use Reformo\Domain\User\Query\GetUserByIdHandler;
 
 return [
 
@@ -17,7 +17,7 @@ return [
         ],
         'factories'  => [
         //    Command::class => CommandHandlerFactory::class
-            RegisterUserHandler::class => CommandHandlerFactory::class,
+            GetUserByIdHandler::class => CommandHandlerFactory::class,
             GetAllUsersHandler::class => CommandHandlerFactory::class,
         ],
     ],

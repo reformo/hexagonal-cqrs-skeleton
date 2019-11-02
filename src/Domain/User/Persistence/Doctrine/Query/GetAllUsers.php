@@ -9,9 +9,8 @@ use Doctrine\DBAL\FetchMode;
 use Reformo\Common\Exception\ExecutionFailed;
 use Reformo\Common\Exception\InvalidParameter;
 use Reformo\Common\Query;
-use Reformo\Domain\User\Model\User;
 use Reformo\Domain\User\Model\UsersCollection;
-use Reformo\Domain\User\Persistence\Doctrine\FetchObject\User as UserFetchObject;
+use Reformo\Domain\User\Persistence\FetchObject\User;
 use Throwable;
 use function array_key_exists;
 
@@ -37,14 +36,9 @@ SQL;
         $query     = new static($connection);
         $statement = $query->executeQuery(self::$sql, $parameters);
         try {
-            $users   = new UsersCollection();
-            $records = $statement->fetchAll(FetchMode::CUSTOM_OBJECT, UserFetchObject::class);
-            foreach ($records as $item) {
-                $user = User::create($item->id, $item->email, $item->firstName, $item->lastName, $item->createdAt);
-                $users->push($user);
-            }
+            $records = $statement->fetchAll(FetchMode::CUSTOM_OBJECT, User::class);
 
-            return $users;
+            return new UsersCollection($records);
         } catch (Throwable $exception) {
             throw ExecutionFailed::create($exception->getMessage());
         }

@@ -30,8 +30,9 @@ class ConfigProvider
 
     public function registerRoutes(Application $app, MiddlewareFactory $factory) : void
     {
-        $app->get('/', Handler\PingHandler::class, 'root');
-        $app->get('/error', Handler\PingErrorHandler::class, 'error');
+        $app->get('/problem-details', Handler\ApiErrorHandler::class, 'error');
+        $app->get('/users', Handler\Users\Users::class, 'users');
+        $app->get('/users/{userId}', Handler\Users\UserDetails::class, 'users.details');
     }
 
     /**
@@ -42,8 +43,9 @@ class ConfigProvider
         return [
             'invokables' => [],
             'factories'  => [
-                Handler\PingHandler::class => RequestHandlerFactory::class,
-                Handler\PingErrorHandler::class => RequestHandlerFactory::class,
+                Handler\ApiErrorHandler::class => RequestHandlerFactory::class,
+                Handler\Users\Users::class => RequestHandlerFactory::class,
+                Handler\Users\UserDetails::class => RequestHandlerFactory::class,
             ],
         ];
     }

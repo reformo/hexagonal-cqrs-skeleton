@@ -30,12 +30,16 @@ class UserRepository implements UserRepositoryInterface
 
     public function getUserById(UserId $userId) : ?User
     {
-        return GetUserById::execute($this->connection, ['userId' => $userId->toString()]);
+        $user = GetUserById::execute($this->connection, ['userId' => $userId->toString()]);
+
+        return User::create($user->id(), $user->email(), $user->firstName(), $user->lastName(), $user->createdAt());
     }
 
     public function getUserByEmail(Email $email) : ?User
     {
-        return GetUserByEmail::execute($this->connection, ['email' => $email->toString()]);
+        $user =  GetUserByEmail::execute($this->connection, ['email' => $email->toString()]);
+
+        return User::create($user->id(), $user->email(), $user->firstName(), $user->lastName(), $user->createdAt());
     }
 
     public function add(User $user) : bool
@@ -53,6 +57,13 @@ class UserRepository implements UserRepositoryInterface
 
     public function getAllUsersPaginated(int $offset, int $limit) : UsersCollection
     {
-        return GetAllUsers::execute($this->connection, ['offset' => $offset, 'limit' => $limit]);
+        $users   = new UsersCollection();
+        $records = GetAllUsers::execute($this->connection, ['offset' => $offset, 'limit' => $limit]);
+        foreach ($records as $item) {
+            $user =User::create($item->id(), $item->email(), $item->firstName(), $item->lastName(), $item->createdAt());
+            $users->push($user);
+        }
+
+        return $users;
     }
 }

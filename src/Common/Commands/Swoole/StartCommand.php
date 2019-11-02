@@ -16,7 +16,6 @@ use Zend\Expressive\Swoole\Command\IsRunningTrait;
 use Zend\Expressive\Swoole\PidManager;
 use function file_exists;
 use function sys_get_temp_dir;
-use function var_dump;
 
 class StartCommand extends Command
 {
@@ -85,9 +84,9 @@ EOH;
 
             return 1;
         }
-        $daemonize  = $input->getOption('daemonize');
-        $numWorkers = $input->getOption('num-workers');
-        $module     = $input->getOption('module');
+        $daemonize     = $input->getOption('daemonize');
+        $numWorkers    = $input->getOption('num-workers');
+        $module        = $input->getOption('module');
         $serverOptions = [];
         if ($daemonize) {
             $serverOptions['daemonize'] = $daemonize;

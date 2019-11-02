@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Reformo\Common\Util;
 
 use Twig\Extension\AbstractExtension;
-use Twig\TwigFunction;
 use Twig\Extension\GlobalsInterface;
+use Twig\TwigFunction;
 
 class TwigExtension extends AbstractExtension implements GlobalsInterface
 {

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Reformo\FrontWeb\Handler;
 
-use League\Tactician\CommandBus;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Ramsey\Uuid\Uuid;
+use Reformo\Common\Interfaces\CommandBus;
 use Reformo\Domain\User\Command\RegisterUser;
 use Reformo\Domain\User\Exception\UserAlreadyExists;
 use Throwable;
@@ -19,7 +19,6 @@ class AddUserHandler implements RequestHandlerInterface
 {
     private $config;
     private $commandBus;
-    private $urlHelper;
 
     public function __construct(
         CommandBus $commandBus,

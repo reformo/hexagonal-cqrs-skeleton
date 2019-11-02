@@ -116,8 +116,8 @@
         "cs-check": "vendor/bin/phpcs --standard=Doctrine",
         "cs-fix": "vendor/bin/phpcbf --standard=Doctrine",
         "check-assumptions": "vendor/bin/phpa",
-        "serve-frontweb": "php -S 0.0.0.0:8080 -t modules/FrontWeb/public",
-        "serve-private-api": "php -S 0.0.0.0:8081 -t modules/PrivateApi/public",
+        "serve-frontweb": "php -S 0.0.0.0:8080 -t src/Infrastructure/Ui/FrontWeb/public",
+        "serve-private-api": "php -S 0.0.0.0:8081 -t src/Infrastructure/Ui/PrivateApi/public",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
     }

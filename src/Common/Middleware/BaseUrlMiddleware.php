@@ -25,11 +25,12 @@ class BaseUrlMiddleware implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
-        $serverParameters = $request->getServerParams();
-        $serverParameters['HTTP_HOST'] = $serverParameters['HTTP_HOST'] ?? $request->getHeader('host')[0] ?? '';
+        $serverParameters                = $request->getServerParams();
+        $serverParameters['HTTP_HOST']   = $serverParameters['HTTP_HOST'] ?? $request->getHeader('host')[0] ?? '';
         $serverParameters['SCRIPT_NAME'] = $serverParameters['SCRIPT_NAME'] ?? '';
-        $serverParameters['PHP_SELF'] = $serverParameters['PHP_SELF'] ?? '';
-        $request = $request->withAttribute('base-url', BaseUrlExtractor::getBaseUrl($serverParameters));
+        $serverParameters['PHP_SELF']    = $serverParameters['PHP_SELF'] ?? '';
+        $request                         = $request->withAttribute('base-url', BaseUrlExtractor::getBaseUrl($serverParameters));
+
         return $handler->handle($request);
     }
 }
