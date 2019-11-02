@@ -15,6 +15,8 @@ use Zend\Expressive\Router\Middleware\MethodNotAllowedMiddleware;
 use Zend\Expressive\Router\Middleware\RouteMiddleware;
 use Zend\Stratigility\Middleware\ErrorHandler;
 use Reformo\Common\Middleware\BaseUrlMiddleware;
+use Zend\Expressive\Csrf\CsrfMiddleware;
+use Zend\Expressive\Session\SessionMiddleware;
 
 /**
  * @var Application $app
@@ -50,19 +52,8 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
     // This middleware registers the Zend\Expressive\Router\RouteResult request attribute.
     $app->pipe(RouteMiddleware::class);
 
-    // The following handle routing failures for common conditions:
-    // - HEAD request but no routes answer that method
-    // - OPTIONS request but no routes answer that method
-    // - method not allowed
-    // Order here matters; the MethodNotAllowedMiddleware should be placed
-    // after the Implicit*Middleware.
-    $app->pipe(ImplicitHeadMiddleware::class);
-    $app->pipe(ImplicitOptionsMiddleware::class);
-    $app->pipe(MethodNotAllowedMiddleware::class);
-
     // Seed the UrlHelper with the routing results:
     $app->pipe(UrlHelperMiddleware::class);
-
     // Add more middleware here that needs to introspect the routing results; this
     // might include:
     //

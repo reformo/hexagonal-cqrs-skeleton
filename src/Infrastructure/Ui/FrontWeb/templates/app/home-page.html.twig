@@ -19,7 +19,7 @@
                 {% else %}
                     <ul>
                     {% for user in users %}
-                        <li>{{ user.firstName }} {{ user.lastName }} ({{ user.email.toString() }}) <small>Created at: {{ user.createdAt.format('Y-m-d H:i:s') }}</small></li>
+                        <li>{{ user.firstName }} {{ user.lastName }} ({{ user.email.toString() }}) <small>Created at: {{ user.createdAt.format('Y-m-d H:i:s')|localizeddate('medium', 'none', 'en-us') }}</small></li>
                     {% endfor %}
                     </ul>
                 {% endif %}
