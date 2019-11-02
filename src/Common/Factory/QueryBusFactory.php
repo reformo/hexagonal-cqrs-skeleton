@@ -25,7 +25,7 @@ class QueryBusFactory implements FactoryInterface
                 new Invoke()
             )
         );
-        $commandBus = new CommandBus($handlerMiddleware);
+        $commandBus        = new CommandBus($handlerMiddleware);
 
         return new QueryBus($commandBus);
     }

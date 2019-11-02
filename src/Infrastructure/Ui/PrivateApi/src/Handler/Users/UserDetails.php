@@ -29,8 +29,6 @@ class UserDetails implements RequestHandlerInterface
         $query = new GetUserById($request->getAttribute('userId'));
         $users = $this->queryBus->handle($query);
 
-        return new JsonResponse([
-            'user' => $users,
-        ]);
+        return new JsonResponse(['user' => $users]);
     }
 }

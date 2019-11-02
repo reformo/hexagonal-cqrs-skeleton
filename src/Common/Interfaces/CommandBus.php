@@ -6,5 +6,5 @@ namespace Reformo\Common\Interfaces;
 
 interface CommandBus
 {
-    public function handle(object $command);
+    public function handle(object $command) : void;
 }

@@ -38,6 +38,7 @@ SQL;
             if (count($records) === 0) {
                 throw UserNotFound::create(sprintf('User not found by id: %s', $parameters['id']));
             }
+
             return $records[0];
         } catch (Throwable $exception) {
             throw ExecutionFailed::create($exception->getMessage());

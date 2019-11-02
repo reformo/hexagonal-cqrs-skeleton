@@ -29,8 +29,6 @@ class Users implements RequestHandlerInterface
         $query = new GetAllUsers(0, 25);
         $users = $this->queryBus->handle($query);
 
-        return new JsonResponse([
-            'users' => $users,
-        ]);
+        return new JsonResponse(['users' => $users]);
     }
 }

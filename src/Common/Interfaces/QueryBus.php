@@ -6,5 +6,5 @@ namespace Reformo\Common\Interfaces;
 
 interface QueryBus
 {
-    public function handle(object $query);
+    public function handle(object $query) : void;
 }

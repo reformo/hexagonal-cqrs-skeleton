@@ -9,10 +9,10 @@ use Reformo\Common\Interfaces\Email;
 use Reformo\Domain\User\Interfaces\UserId;
 use Reformo\Domain\User\Interfaces\UserQuery as UserQueryInterface;
 use Reformo\Domain\User\Model\UsersCollection;
-use Reformo\Domain\User\Persistence\FetchObject\User;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetAllUsers;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetUserByEmail;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetUserById;
+use Reformo\Domain\User\Persistence\FetchObject\User;
 
 class UserQuery implements UserQueryInterface
 {
