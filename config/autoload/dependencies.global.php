@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Zend\ServiceManager\Proxy\LazyServiceFactory;
 use Doctrine\DBAL\Connection as DoctrineConnection;
+use League\Tactician\CommandBus as TacticianCommandBus;
+use Reformo\Common\Factory\TacticianCommandBusFactory;
 use Reformo\Common\Factory\CommandBusFactory;
 use Reformo\Common\Factory\QueryBusFactory;
 use Reformo\Common\Interfaces\CommandBus;
@@ -19,6 +21,7 @@ return [
     'dependencies' => [
         'aliases' => [],
         'factories'  => [
+            TacticianCommandBus::class => TacticianCommandBusFactory::class,
             CommandBus::class => CommandBusFactory::class,
             QueryBus::class => QueryBusFactory::class,
             DoctrineConnection::class => DoctrineConnectionFactory::class,
