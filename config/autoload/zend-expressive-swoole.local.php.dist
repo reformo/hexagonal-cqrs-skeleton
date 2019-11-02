@@ -1,0 +1,4 @@
+<?php
+use Reformo\Common\SwooleConfigProvider;
+
+return (new SwooleConfigProvider())();
