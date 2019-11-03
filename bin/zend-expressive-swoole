@@ -61,7 +61,7 @@ if ($options->hasParameterOption('--module') === false) {
 $module = $options->getParameterOption('--module');
 
 // Setup/verify application DI container
-$containerFile = sprintf('%s/modules/%s/config/container.php', getcwd(), $module);
+$containerFile = sprintf('%s/src/Infrastructure/Ui/%s/config/container.php', getcwd(), $module);
 if (! file_exists($containerFile)) {
     fwrite(STDERR, sprintf(
         'No container file (%s) detected; are you in an Expressive application?%s',

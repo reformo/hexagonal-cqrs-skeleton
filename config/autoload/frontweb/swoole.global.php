@@ -10,7 +10,7 @@ return [
             ],
             'static-files' => [
                 'enable' => true,
-                'document-root' => 'modules/Frontweb/public',
+                'document-root' => 'src/Infrastructure/Ui/Frontweb/public',
             ],
         ]
     ]

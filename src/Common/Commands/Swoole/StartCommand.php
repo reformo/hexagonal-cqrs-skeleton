@@ -109,7 +109,7 @@ EOH;
         // Execute programmatic/declarative middleware pipeline and routing
         // configuration statements, if they exist
         foreach (self::PROGRAMMATIC_CONFIG_FILES as $configFile) {
-            $configFile = 'modules/' . $module . '/config/' . $configFile;
+            $configFile = 'src/Infrastructure/Ui/' . $module . '/config/' . $configFile;
             if (! file_exists($configFile)) {
                 continue;
             }
