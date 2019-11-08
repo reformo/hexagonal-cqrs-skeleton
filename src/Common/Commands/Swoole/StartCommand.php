@@ -76,9 +76,9 @@ EOH;
 
     protected function execute(InputInterface $input, OutputInterface $output) : int
     {
-        $config           = $this->container->get('config');
-        $this->pidManager = new PidManager($config['zend-expressive-swoole']['swoole-http-server']['options']['pid_file']
-            ?? sys_get_temp_dir() . '/zend-swoole.pid');
+        $config            = $this->container->get('config');
+        $pidFileFromConfig = $config['zend-expressive-swoole']['swoole-http-server']['options']['pid_file'];
+        $this->pidManager  = new PidManager($pidFileFromConfig ?? sys_get_temp_dir() . '/zend-swoole.pid');
         if ($this->isRunning()) {
             $output->writeln('<error>Server is already running!</error>');
 

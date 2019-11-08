@@ -17,21 +17,21 @@ class HomePageHandler implements RequestHandlerInterface
     /** @var TemplateRendererInterface|null */
     private $template;
     private $config;
-    private $commandBus;
+    private $queryBus;
 
     public function __construct(
-        QueryBus $commandBus,
+        QueryBus $queryBus,
         TemplateRendererInterface $template,
         array $config
     ) {
-        $this->template   = $template;
-        $this->config     = $config;
-        $this->commandBus = $commandBus;
+        $this->template = $template;
+        $this->config   = $config;
+        $this->queryBus = $queryBus;
     }
 
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
-        $command               = new GetAllUsers(0, 25);
+        $query                 = new GetAllUsers(0, 25);
         $data                  = [];
         $data['containerName'] = 'Zend Servicemanager';
         $data['containerDocs'] = 'https://docs.zendframework.com/zend-servicemanager/';
@@ -39,7 +39,8 @@ class HomePageHandler implements RequestHandlerInterface
         $data['routerDocs']    = 'https://github.com/nikic/FastRoute';
         $data['templateName']  = 'Twig';
         $data['templateDocs']  = 'http://twig.sensiolabs.org/documentation';
-        $data['users']         = $this->commandBus->handle($command);
+        $data['users']         = $this->queryBus->handle($query);
+        $data['queryParams']   = $request->getQueryParams();
 
         return new HtmlResponse($this->template->render('app::home-page', $data));
     }

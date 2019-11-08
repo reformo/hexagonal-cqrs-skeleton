@@ -33,6 +33,7 @@ class ConfigProvider
     {
         $app->get('/', Handler\HomePageHandler::class, 'home');
         $app->post('/users/add', Handler\AddUserHandler::class, 'users.add');
+        $app->get('/users/delete/{userId}', Handler\DeleteUserHandler::class, 'users.delete');
     }
 
     /**
@@ -45,6 +46,7 @@ class ConfigProvider
             'factories'  => [
                 Handler\HomePageHandler::class => RequestHandlerFactory::class,
                 Handler\AddUserHandler::class => RequestHandlerFactory::class,
+                Handler\DeleteUserHandler::class => RequestHandlerFactory::class,
             ],
         ];
     }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Reformo\Domain\User\Persistence\Doctrine;
 
 use Doctrine\DBAL\Connection;
+use Reformo\Common\Exception\ExecutionFailed;
 use Reformo\Common\Interfaces\Email;
 use Reformo\Domain\User\Exception\UserAlreadyExists;
 use Reformo\Domain\User\Exception\UserNotFound;
@@ -16,6 +17,7 @@ use Reformo\Domain\User\Persistence\Doctrine\Query\AddUser;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetAllUsers;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetUserByEmail;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetUserById;
+use Throwable;
 use function sprintf;
 
 class UserRepository implements UserRepositoryInterface
@@ -42,7 +44,7 @@ class UserRepository implements UserRepositoryInterface
         return User::create($user->id(), $user->email(), $user->firstName(), $user->lastName(), $user->createdAt());
     }
 
-    public function add(User $user) : bool
+    public function registerUser(User $user) : void
     {
         try {
             $this->getUserByEmail($user->email());
@@ -51,7 +53,23 @@ class UserRepository implements UserRepositoryInterface
                 ['provided_email' => $user->email()->toString()]
             );
         } catch (UserNotFound $exception) {
-            return AddUser::execute($this->connection, $user) > 0;
+            AddUser::execute($this->connection, $user);
+        }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function unregisterUser(UserId $userId) : void
+    {
+        try {
+            $this->getUserById($userId);
+            $this->connection->delete(
+                self::TABLE_NAME,
+                ['id' => $userId->id()->toString()]
+            );
+        } catch (Throwable $exception) {
+            throw ExecutionFailed::create($exception->getMessage());
         }
     }
 
@@ -60,7 +78,13 @@ class UserRepository implements UserRepositoryInterface
         $users   = new UsersCollection();
         $records = GetAllUsers::execute($this->connection, ['offset' => $offset, 'limit' => $limit]);
         foreach ($records as $item) {
-            $user =User::create($item->id(), $item->email(), $item->firstName(), $item->lastName(), $item->createdAt());
+            $user = User::create(
+                $item->id(),
+                $item->email(),
+                $item->firstName(),
+                $item->lastName(),
+                $item->createdAt()
+            );
             $users->push($user);
         }
 

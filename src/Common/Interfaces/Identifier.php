@@ -8,8 +8,6 @@ use Ramsey\Uuid\UuidInterface;
 
 interface Identifier
 {
-    public static function createFromString(string $uuid) : Identifier;
-
     public function id() : UuidInterface;
 
     public function toString() : string;

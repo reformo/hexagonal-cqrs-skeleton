@@ -7,7 +7,7 @@ namespace Reformo\PrivateApi\Handler;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Reformo\Common\Exception\InvalidParameter;
+use Reformo\Common\Exception\InvalidArgument;
 
 class ApiErrorHandler implements RequestHandlerInterface
 {
@@ -20,6 +20,6 @@ class ApiErrorHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
-        throw InvalidParameter::create('Invalid input', ['code' => 'AD-1224']);
+        throw InvalidArgument::create('Invalid input', ['code' => 'AD-1224']);
     }
 }

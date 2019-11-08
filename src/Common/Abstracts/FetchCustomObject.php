@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Reformo\Common\Abstracts;
 
-use Reformo\Common\Exception\InvalidParameter;
+use Reformo\Common\Exception\InvalidArgument;
 use Selami\Stdlib\CaseConverter;
 use function get_object_vars;
 use function property_exists;
@@ -16,7 +16,7 @@ trait FetchCustomObject
     {
         $propertyName = CaseConverter::toCamelCase($name);
         if (! property_exists($this, $propertyName)) {
-            throw InvalidParameter::create(
+            throw InvalidArgument::create(
                 sprintf(
                     'FetchCustomObject does not have property named: %s (%s).',
                     $propertyName,
@@ -25,7 +25,7 @@ trait FetchCustomObject
             );
         }
         if ($this->{$propertyName} !== null) {
-            throw InvalidParameter::create(
+            throw InvalidArgument::create(
                 sprintf(
                     'A value for the property (%s) has already been set.',
                     $propertyName
@@ -43,7 +43,7 @@ trait FetchCustomObject
     public function __get($name)
     {
         if (! property_exists($this, $name)) {
-            throw InvalidParameter::create(
+            throw InvalidArgument::create(
                 sprintf(
                     'This object does not have a property named: (%s)',
                     $name

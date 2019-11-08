@@ -36,7 +36,7 @@ class User
         $this->createdAt = $createdAt;
     }
 
-    public static function create(string $uuid, string $email, string $firstName, string $lastName, string $createdAt)
+    public static function create(string $uuid, string $email, string $firstName, string $lastName)
     {
         try {
             Assert::minLength($firstName, 2, 'First name must be at least 2 characters long');
@@ -54,7 +54,7 @@ class User
             Email::createFromString($email),
             $firstName,
             $lastName,
-            DateTimeImmutable::createFromFormat(self::CREATED_AT_FORMAT, $createdAt)
+            new DateTimeImmutable('now')
         );
     }
 

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Reformo\Common\Exception;
 
-use Exception;
+use InvalidArgumentException;
 use Reformo\Domain\DomainException;
 use Zend\ProblemDetails\Exception\ProblemDetailsExceptionInterface;
 
-class InvalidParameter extends Exception implements ProblemDetailsExceptionInterface
+class InvalidArgument extends InvalidArgumentException implements ProblemDetailsExceptionInterface
 {
     use DomainException;
 
