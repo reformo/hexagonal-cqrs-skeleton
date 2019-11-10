@@ -8,6 +8,7 @@ use Doctrine\DBAL\Connection;
 use Reformo\Common\Exception\InvalidArgument;
 use Reformo\Common\Query;
 use Reformo\Domain\User\Model\User;
+use Reformo\Domain\User\Persistence\Doctrine\UserMapper;
 
 final class AddUser
 {
@@ -18,13 +19,8 @@ final class AddUser
         if (! $user instanceof User) {
             throw InvalidArgument::create('Provided data is not a User object!');
         }
+        $mapper = new UserMapper($user);
 
-        return $connection->insert('users', [
-            'id' => $user->id()->toString(),
-            'email' => $user->email()->toString(),
-            'first_name' => $user->firstName(),
-            'last_name' => $user->lastName(),
-            'created_at' => $user->createdAt()->format(User::CREATED_AT_FORMAT),
-        ]);
+        return $connection->insert('users', $mapper->toDatabasePayload());
     }
 }

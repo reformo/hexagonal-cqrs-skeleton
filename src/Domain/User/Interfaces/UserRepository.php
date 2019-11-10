@@ -8,7 +8,6 @@ use Reformo\Common\Exception\ExecutionFailed;
 use Reformo\Common\Interfaces\Email;
 use Reformo\Domain\User\Exception\UserNotFound;
 use Reformo\Domain\User\Model\User;
-use Reformo\Domain\User\Model\UsersCollection;
 
 interface UserRepository
 {
@@ -21,8 +20,10 @@ interface UserRepository
     /**
      * @throws UserNotFound
      * @throws ExecutionFailed
+     *
+     * @var UserId
      */
     public function unregisterUser(UserId $id) : void;
 
-    public function getAllUsersPaginated(int $offset, int $limit) : UsersCollection;
+    public function updateUserInfo(UserId $userId, array $payload) : void;
 }

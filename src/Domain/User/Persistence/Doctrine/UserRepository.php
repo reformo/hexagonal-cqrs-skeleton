@@ -7,14 +7,13 @@ namespace Reformo\Domain\User\Persistence\Doctrine;
 use Doctrine\DBAL\Connection;
 use Reformo\Common\Exception\ExecutionFailed;
 use Reformo\Common\Interfaces\Email;
+use Reformo\Domain\User\Exception\CantUnregisterUserDoesNotExists;
 use Reformo\Domain\User\Exception\UserAlreadyExists;
 use Reformo\Domain\User\Exception\UserNotFound;
 use Reformo\Domain\User\Interfaces\UserId;
 use Reformo\Domain\User\Interfaces\UserRepository as UserRepositoryInterface;
 use Reformo\Domain\User\Model\User;
-use Reformo\Domain\User\Model\UsersCollection;
 use Reformo\Domain\User\Persistence\Doctrine\Query\AddUser;
-use Reformo\Domain\User\Persistence\Doctrine\Query\GetAllUsers;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetUserByEmail;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetUserById;
 use Throwable;
@@ -64,6 +63,10 @@ class UserRepository implements UserRepositoryInterface
     {
         try {
             $this->getUserById($userId);
+        } catch (Throwable $exception) {
+            throw CantUnregisterUserDoesNotExists::create($exception->getMessage());
+        }
+        try {
             $this->connection->delete(
                 self::TABLE_NAME,
                 ['id' => $userId->id()->toString()]
@@ -73,21 +76,9 @@ class UserRepository implements UserRepositoryInterface
         }
     }
 
-    public function getAllUsersPaginated(int $offset, int $limit) : UsersCollection
+    public function updateUserInfo(UserId $userId, array $payload) : void
     {
-        $users   = new UsersCollection();
-        $records = GetAllUsers::execute($this->connection, ['offset' => $offset, 'limit' => $limit]);
-        foreach ($records as $item) {
-            $user = User::create(
-                $item->id(),
-                $item->email(),
-                $item->firstName(),
-                $item->lastName(),
-                $item->createdAt()
-            );
-            $users->push($user);
-        }
-
-        return $users;
+        $this->getUserById($userId);
+        $this->connection->update(self::TABLE_NAME, $payload, ['id' => $userId->toString()]);
     }
 }

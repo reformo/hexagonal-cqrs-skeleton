@@ -10,7 +10,7 @@ use Reformo\Common\Exception\ExecutionFailed;
 use Reformo\Common\Exception\InvalidArgument;
 use Reformo\Common\Query;
 use Reformo\Domain\User\Model\UsersCollection;
-use Reformo\Domain\User\Persistence\FetchObject\User;
+use Reformo\Domain\User\Persistence\Doctrine\ResultObject\User;
 use Throwable;
 use function array_key_exists;
 

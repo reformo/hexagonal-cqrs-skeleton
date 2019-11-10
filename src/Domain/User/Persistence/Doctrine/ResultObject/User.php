@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Domain\User\Persistence\FetchObject;
+namespace Reformo\Domain\User\Persistence\Doctrine\ResultObject;
 
 use JsonSerializable;
-use Reformo\Common\Abstracts\FetchCustomObject;
+use Reformo\Common\Abstracts\ResultObject;
 
 class User implements JsonSerializable
 {
-    use FetchCustomObject;
+    use ResultObject;
 
     private $id;
     private $email;

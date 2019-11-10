@@ -7,7 +7,7 @@ namespace Reformo\Domain\User\Interfaces;
 use Reformo\Common\Interfaces\Email;
 use Reformo\Domain\User\Interfaces\UserId as UserIdInterface;
 use Reformo\Domain\User\Model\UsersCollection;
-use Reformo\Domain\User\Persistence\FetchObject\User;
+use Reformo\Domain\User\Persistence\Doctrine\ResultObject\User;
 
 interface UserQuery
 {

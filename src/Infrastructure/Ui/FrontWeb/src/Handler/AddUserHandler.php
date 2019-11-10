@@ -42,7 +42,7 @@ class AddUserHandler implements RequestHandlerInterface
             $this->commandBus->handle($command);
         } catch (UserAlreadyExists $exception) {
             $uri = $request->getAttribute('base-url') . '/?error=add-user-failed&' .
-                http_build_query($request->getParsedBody()) . '_reason=' . urlencode($exception->getMessage());
+                http_build_query($request->getParsedBody()) . '&_reason=' . urlencode($exception->getMessage());
 
             return new RedirectResponse($uri, 302);
         } catch (Throwable $exception) {

@@ -21,6 +21,8 @@ class UnregisterUserHandler
     /**
      * @throws UserNotFound
      * @throws ExecutionFailed
+     *
+     * @var UnregisterUser
      */
     public function __invoke(UnregisterUser $command) : void
     {

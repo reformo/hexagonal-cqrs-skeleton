@@ -6,7 +6,7 @@ namespace Reformo\Domain\User\Query;
 
 use Reformo\Domain\User\Interfaces\UserQuery;
 use Reformo\Domain\User\Model\UserId;
-use Reformo\Domain\User\Persistence\FetchObject\User;
+use Reformo\Domain\User\Persistence\Doctrine\ResultObject\User;
 
 class GetUserByIdHandler
 {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 use Reformo\Common\Factory\CommandHandlerFactory;
 use Reformo\Domain\User\Command\RegisterUserHandler;
 use Reformo\Domain\User\Command\UnregisterUserHandler;
+use Reformo\Domain\User\Command\UpdateUserPartiallyHandler;
 
 return [
     'dependencies' => [
@@ -17,6 +18,7 @@ return [
         //    Command::class => CommandHandlerFactory::class
             RegisterUserHandler::class => CommandHandlerFactory::class,
             UnregisterUserHandler::class => CommandHandlerFactory::class,
+            UpdateUserPartiallyHandler::class => CommandHandlerFactory::class,
         ],
     ],
 ];

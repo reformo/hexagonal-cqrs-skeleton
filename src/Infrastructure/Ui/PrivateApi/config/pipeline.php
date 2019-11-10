@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use Psr\Container\ContainerInterface;
+use Reformo\Common\Middleware\ApiContentNegotiationMiddleware;
+use Reformo\Common\Middleware\CustomResponseHeadersMiddleware;
 use Zend\Expressive\Application;
 use Zend\Expressive\Handler\NotFoundHandler;
 use Zend\Expressive\Helper\BodyParams\BodyParamsMiddleware;
@@ -25,9 +27,9 @@ use Zend\Stratigility\Middleware\ErrorHandler;
 return static function (Application $app, MiddlewareFactory $factory, ContainerInterface $container) : void {
     // The error handler should be the first (most outer) middleware to catch
     // all Exceptions.
-
     $app->pipe(ErrorHandler::class);
     $app->pipe(ProblemDetailsMiddleware::class);
+    $app->pipe(ApiContentNegotiationMiddleware::class);
     $app->pipe(BodyParamsMiddleware::class);
     $app->pipe(ServerUrlMiddleware::class);
 
@@ -52,7 +54,7 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
     // Register the routing middleware in the middleware pipeline.
     // This middleware registers the Zend\Expressive\Router\RouteResult request attribute.
     $app->pipe(RouteMiddleware::class);
-
+    $app->pipe(CustomResponseHeadersMiddleware::class);
     // The following handle routing failures for common conditions:
     // - HEAD request but no routes answer that method
     // - OPTIONS request but no routes answer that method

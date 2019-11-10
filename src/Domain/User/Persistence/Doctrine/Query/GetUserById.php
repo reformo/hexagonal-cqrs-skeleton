@@ -10,7 +10,7 @@ use Reformo\Common\Exception\ExecutionFailed;
 use Reformo\Common\Exception\InvalidArgument;
 use Reformo\Common\Query;
 use Reformo\Domain\User\Exception\UserNotFound;
-use Reformo\Domain\User\Persistence\FetchObject\User;
+use Reformo\Domain\User\Persistence\Doctrine\ResultObject\User;
 use Throwable;
 use function array_key_exists;
 use function count;
@@ -36,11 +36,14 @@ SQL;
         try {
             $records = $statement->fetchAll(FetchMode::CUSTOM_OBJECT, User::class);
             if (count($records) === 0) {
-                throw UserNotFound::create(sprintf('User not found by id: %s', $parameters['id']));
+                throw UserNotFound::create(sprintf('User not found by id: %s', $parameters['userId']));
             }
 
             return $records[0];
         } catch (Throwable $exception) {
+            if ($exception instanceof  UserNotFound) {
+                throw $exception;
+            }
             throw ExecutionFailed::create($exception->getMessage());
         }
     }

@@ -10,7 +10,7 @@ use function get_object_vars;
 use function property_exists;
 use function sprintf;
 
-trait FetchCustomObject
+trait ResultObject
 {
     public function __set(string $name, $value) : void
     {

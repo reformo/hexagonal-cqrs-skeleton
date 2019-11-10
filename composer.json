@@ -43,6 +43,7 @@
     "require": {
         "php": "^7.3",
         "ext-json": "*",
+        "doctrine/collections": "^1.6",
         "doctrine/dbal": "^2.9",
         "league/tactician": "~2.0-rc1",
         "ocramius/proxy-manager": "^2.2",
