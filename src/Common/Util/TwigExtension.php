@@ -29,7 +29,7 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
     {
         return [
             new TwigFunction('translate', 'gettext'),
-            new TwigFunction('translate_plural', 'ngettext'),
+            new TwigFunction('plural', [$this, 'translatePlural']),
          //   new TwigFunction('yourFunction', [$this, 'methodName']),
         ];
     }
@@ -39,5 +39,9 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
         return [
             //  new TwigFilter('yourFilter', [$this, 'methodName']),
         ];
+    }
+    public function translatePlural($messageId, $number)
+    {
+        return ngettext($messageId, $messageId.'_PLURAL', $number);
     }
 }

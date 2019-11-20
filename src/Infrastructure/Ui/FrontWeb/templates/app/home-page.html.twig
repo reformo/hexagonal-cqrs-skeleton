@@ -17,10 +17,10 @@
                 <div class="alert alert-warning">{{ queryParams._reason }}</div>
             {% endif %}
             <div>
-                {% if users|length == 0 %}
+                {% if users|length == 0 %} 
                    {{ translate("NO_USER") }}
                 {% else %}
-                    {{ translate_plural("NUMBER_OF_USERS", "NUMBER_OF_USERS_PLURAL", users|length) | format(users|length) }}
+                    {{ plural("NUMBER_OF_USERS", users|length) | format(users|length) }}
                     <ul>
                     {% for user in users %}
                         <li>
