@@ -6,6 +6,18 @@ return [
     'locale' => 'en_US',
     'plural-forms' => 'nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);',
     'messages' => [
+        '_LOCALE' => [
+            'translate' => 'en_US'
+        ],
+        '_LANG' => [
+            'translate' => 'en-US'
+        ],
+        '_REGION' => [
+            'translate' => 'us'
+        ],
+        '_DIR' => [
+            'translate' => 'ltr'
+        ],
         'HOME_PAGE_WELCOME_TO_S' => [
             'translate' => 'Welcome to %s',
             'reference' => 'Infrastructure/Ui/FormWeb/templates/app/home-page.html.twig',
@@ -13,7 +25,7 @@ return [
         ],
         'NUMBER_OF_USERS' => [
             'translate' => 'One user',
-            'translate-plural' => '%s users',
+            'translate-plural' => '%d users',
             'reference' => 'Infrastructure/Ui/FormWeb/templates/app/home-page.html.twig',
             'comment' => 'Number of users'
         ],

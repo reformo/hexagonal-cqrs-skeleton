@@ -42,6 +42,9 @@ class LocalizationMiddleware implements MiddlewareInterface
     private function setLocale(string $locale, string $domain) : void
     {
         $localeFile        = 'data/cache/locale/' . $locale . '/LC_MESSAGES/' . $domain . '.mo';
+        if (!file_exists($localeFile)) {
+            return;
+        }
         $modifiedTime      = filemtime($localeFile);
         $localeFileRuntime = 'data/cache/locale/' . $locale . '/LC_MESSAGES/' . $domain . '_' . $modifiedTime . '.mo';
         if (! file_exists($localeFileRuntime)) {
