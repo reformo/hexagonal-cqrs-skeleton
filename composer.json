@@ -43,8 +43,11 @@
     "require": {
         "php": "^7.3",
         "ext-json": "*",
+        "ext-intl": "*",
+        "ext-gettext": "*",
         "doctrine/collections": "^1.6",
         "doctrine/dbal": "^2.9",
+        "gettext/gettext": "^5.1",
         "league/tactician": "~2.0-rc1",
         "ocramius/proxy-manager": "^2.2",
         "ramsey/uuid": "^3.8",
@@ -101,6 +104,7 @@
         "development-enable": "zf-development-mode enable",
         "development-status": "zf-development-mode status",
         "expressive": "expressive --ansi",
+        "generate-mo-files": "php bin/generate-mo-files.php",
         "check": [
             "@cs-check",
             "@check-assumptions",

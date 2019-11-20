@@ -4,22 +4,23 @@
 
 {% block content %}
     <div class="jumbotron">
-        <h1>Welcome to My App</h1>
+        <h1>{{ translate("HOME_PAGE_WELCOME_TO_S") | format('My App')}}</h1>
 
     </div>
 
     <div class="row">
         <div class="col-md-12">
             <h2>
-                User List
+                {{ translate("USER_LIST_HEADER") }}
             </h2>
             {% if queryParams.error is defined %}
                 <div class="alert alert-warning">{{ queryParams._reason }}</div>
             {% endif %}
-            <p>
+            <div>
                 {% if users|length == 0 %}
-                    No user atm.
+                   {{ translate("NO_USER") }}
                 {% else %}
+                    {{ translate_plural("NUMBER_OF_USERS", "NUMBER_OF_USERS_PLURAL", users|length) | format(users|length) }}
                     <ul>
                     {% for user in users %}
                         <li>
@@ -31,7 +32,7 @@
                     </ul>
                 {% endif %}
 
-            </p>
+            </div>
         </div>
         <div class="col-md-12" style="border-top:1px solid #eee;padding-top:20px;">
             <h3>

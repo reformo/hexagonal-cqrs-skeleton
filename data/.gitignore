@@ -2,4 +2,5 @@
 !cache
 !cache/.gitkeep
 !cache/twig/.gitkeep
+!cache/locale/.gitkeep
 !.gitignore

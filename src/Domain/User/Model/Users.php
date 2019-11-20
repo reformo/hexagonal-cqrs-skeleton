@@ -6,6 +6,6 @@ namespace Reformo\Domain\User\Model;
 
 use Reformo\Common\Abstracts\Collection;
 
-class UsersCollection extends Collection
+class Users extends Collection
 {
 }

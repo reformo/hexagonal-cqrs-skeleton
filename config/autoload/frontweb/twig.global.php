@@ -19,11 +19,11 @@ return [
         'extensions' => [
             Reformo\Common\Util\TwigExtension::class,
             IntlExtension::class,
+            //I18nExtension::class
             // Comment out extensions and invokable dependencies below when you need it
             // TextExtension::class,
             // ArrayExtension::class,
             // DateExtension::class,
-            // I18nExtension::class
         ],
         'globals' => [
 
@@ -35,11 +35,11 @@ return [
     'dependencies' => [
         'invokables' => [
             IntlExtension::class,
+            //I18nExtension::class,
             // Comment out extensions below when you need it
             // TextExtension::class,
             // ArrayExtension::class,
             // DateExtension::class,
-            // I18nExtension::class
         ],
     ]
 ];

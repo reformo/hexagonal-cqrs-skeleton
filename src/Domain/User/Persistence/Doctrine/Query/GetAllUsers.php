@@ -9,7 +9,7 @@ use Doctrine\DBAL\FetchMode;
 use Reformo\Common\Exception\ExecutionFailed;
 use Reformo\Common\Exception\InvalidArgument;
 use Reformo\Common\Query;
-use Reformo\Domain\User\Model\UsersCollection;
+use Reformo\Domain\User\Model\Users;
 use Reformo\Domain\User\Persistence\Doctrine\ResultObject\User;
 use Throwable;
 use function array_key_exists;
@@ -25,7 +25,7 @@ final class GetAllUsers
          LIMIT :offset, :limit
 SQL;
 
-    public static function execute(Connection $connection, array $parameters) : ?UsersCollection
+    public static function execute(Connection $connection, array $parameters) : ?Users
     {
         if (! array_key_exists('offset', $parameters)) {
             throw InvalidArgument::create('Query needs parameter named: offset');
@@ -38,7 +38,7 @@ SQL;
         try {
             $records = $statement->fetchAll(FetchMode::CUSTOM_OBJECT, User::class);
 
-            return new UsersCollection($records);
+            return new Users($records);
         } catch (Throwable $exception) {
             throw ExecutionFailed::create($exception->getMessage());
         }

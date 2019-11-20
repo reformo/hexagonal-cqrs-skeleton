@@ -28,7 +28,16 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
     public function getFunctions() : array
     {
         return [
+            new TwigFunction('translate', 'gettext'),
+            new TwigFunction('translate_plural', 'ngettext'),
          //   new TwigFunction('yourFunction', [$this, 'methodName']),
+        ];
+    }
+
+    public function getFilters()
+    {
+        return [
+            //  new TwigFilter('yourFilter', [$this, 'methodName']),
         ];
     }
 }

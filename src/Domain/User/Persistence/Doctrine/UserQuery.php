@@ -8,7 +8,7 @@ use Doctrine\DBAL\Connection;
 use Reformo\Common\Interfaces\Email;
 use Reformo\Domain\User\Interfaces\UserId;
 use Reformo\Domain\User\Interfaces\UserQuery as UserQueryInterface;
-use Reformo\Domain\User\Model\UsersCollection;
+use Reformo\Domain\User\Model\Users;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetAllUsers;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetUserByEmail;
 use Reformo\Domain\User\Persistence\Doctrine\Query\GetUserById;
@@ -34,7 +34,7 @@ class UserQuery implements UserQueryInterface
         return GetUserByEmail::execute($this->connection, ['email' => $email->toString()]);
     }
 
-    public function getAllUsersPaginated(int $offset, int $limit) : UsersCollection
+    public function getAllUsersPaginated(int $offset, int $limit) : Users
     {
         return GetAllUsers::execute($this->connection, ['offset' => $offset, 'limit' => $limit]);
     }

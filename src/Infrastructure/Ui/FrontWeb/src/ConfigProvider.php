@@ -26,6 +26,7 @@ class ConfigProvider
         return [
             'dependencies' => $this->getDependencies(),
             'templates'    => $this->getTemplates(),
+            'module-name'  => 'FrontWeb'
         ];
     }
 

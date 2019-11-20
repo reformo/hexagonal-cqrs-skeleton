@@ -25,6 +25,7 @@ class ConfigProvider
     {
         return [
             'dependencies' => $this->getDependencies(),
+            'module-name'  => 'PrivateApi'
         ];
     }
 

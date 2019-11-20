@@ -8,6 +8,7 @@ use Reformo\Common\Middleware\CustomResponseHeadersMiddleware;
 use Zend\Expressive\Application;
 use Zend\Expressive\Handler\NotFoundHandler;
 use Zend\Expressive\Helper\BodyParams\BodyParamsMiddleware;
+use Zend\Expressive\Helper\ContentLengthMiddleware;
 use Zend\Expressive\Helper\ServerUrlMiddleware;
 use Zend\Expressive\Helper\UrlHelperMiddleware;
 use Zend\Expressive\MiddlewareFactory;
@@ -32,7 +33,7 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
     $app->pipe(ApiContentNegotiationMiddleware::class);
     $app->pipe(BodyParamsMiddleware::class);
     $app->pipe(ServerUrlMiddleware::class);
-
+    $app->pipe(ContentLengthMiddleware::class);
     // Pipe more middleware here that you want to execute on every request:
     // - bootstrapping
     // - pre-conditions
