@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Reformo\Common;
 
 use Gettext\Loader\Loader;
-use Gettext\Translations;
 use Gettext\Translation;
+use Gettext\Translations;
+use function array_key_exists;
 
 final class GettextArrayLoader extends Loader
 {
@@ -27,7 +28,7 @@ final class GettextArrayLoader extends Loader
                 $translation->getComments()->add($messageData['comment']);
             }
             if (array_key_exists('translate-plural', $messageData) && $messageData['translate-plural'] !== null) {
-                $translation->setPlural($messageId.'_PLURAL');
+                $translation->setPlural($messageId . '_PLURAL');
                 $translation->translatePlural($messageData['translate-plural']);
             }
             $translations->add($translation);
@@ -43,6 +44,7 @@ final class GettextArrayLoader extends Loader
             ->set('Content-Type', 'text/plain; charset=UTF-8')
             ->set('X-Generator', 'Reformo Zend Expressive App')
             ->set('Plural-Forms', $localeData['plural-forms'] ?? 'nplurals=2; plural=n != 1;');
+
         return $translations;
     }
 }

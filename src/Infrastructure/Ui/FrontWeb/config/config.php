@@ -21,7 +21,9 @@ $aggregator  = new ConfigAggregator([
     Zend\Expressive\Helper\ConfigProvider::class,
     Zend\Expressive\ConfigProvider::class,
     Zend\Expressive\Router\ConfigProvider::class,
-
+    Zend\Expressive\Session\ConfigProvider::class,
+    Zend\Expressive\Session\Ext\ConfigProvider::class,
+    Zend\Expressive\Csrf\ConfigProvider::class,
     // Swoole config to overwrite some services (if installed)
     class_exists(Zend\Expressive\Swoole\ConfigProvider::class)
         ? Zend\Expressive\Swoole\ConfigProvider::class

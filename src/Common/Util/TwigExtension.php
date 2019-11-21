@@ -7,6 +7,7 @@ namespace Reformo\Common\Util;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
 use Twig\TwigFunction;
+use function ngettext;
 
 class TwigExtension extends AbstractExtension implements GlobalsInterface
 {
@@ -40,8 +41,9 @@ class TwigExtension extends AbstractExtension implements GlobalsInterface
             //  new TwigFilter('yourFilter', [$this, 'methodName']),
         ];
     }
+
     public function translatePlural($messageId, $number)
     {
-        return ngettext($messageId, $messageId.'_PLURAL', $number);
+        return ngettext($messageId, $messageId . '_PLURAL', $number);
     }
 }

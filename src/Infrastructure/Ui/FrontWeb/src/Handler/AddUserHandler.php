@@ -13,6 +13,7 @@ use Reformo\Domain\User\Command\RegisterUser;
 use Reformo\Domain\User\Exception\UserAlreadyExists;
 use Throwable;
 use Zend\Diactoros\Response\RedirectResponse;
+use Zend\Expressive\Csrf\CsrfMiddleware;
 use function http_build_query;
 use function urlencode;
 
@@ -31,8 +32,15 @@ class AddUserHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
+        $guard             = $request->getAttribute(CsrfMiddleware::GUARD_ATTRIBUTE);
         $requestParameters = $request->getParsedBody();
-        $command           = new RegisterUser(
+        $token             = $requestParameters['__csrf'] ?? '';
+        if (! $guard->validateToken($token)) {
+            $uri = $request->getAttribute('base-url') . '/?error=execution-failed' .
+                '&_reason=' . urlencode('CSRF Failed: CSRF token missing or incorrect');
+            return new RedirectResponse($uri, 302);
+        }
+        $command = new RegisterUser(
             Uuid::uuid4()->toString(),
             $requestParameters['first_name'],
             $requestParameters['last_name'],
@@ -48,7 +56,6 @@ class AddUserHandler implements RequestHandlerInterface
         } catch (Throwable $exception) {
             $uri = $request->getAttribute('base-url') . '/?error=execution-failed' .
                  '&_reason=' . urlencode($exception->getMessage());
-
             return new RedirectResponse($uri, 302);
         }
 

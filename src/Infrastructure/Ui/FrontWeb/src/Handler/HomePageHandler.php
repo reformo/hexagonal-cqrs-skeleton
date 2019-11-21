@@ -10,6 +10,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Reformo\Common\Interfaces\QueryBus;
 use Reformo\Domain\User\Query\GetAllUsers;
 use Zend\Diactoros\Response\HtmlResponse;
+use Zend\Expressive\Csrf\CsrfMiddleware;
 use Zend\Expressive\Template\TemplateRendererInterface;
 
 class HomePageHandler implements RequestHandlerInterface
@@ -31,6 +32,8 @@ class HomePageHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
+        $guard                 = $request->getAttribute(CsrfMiddleware::GUARD_ATTRIBUTE);
+        $token                 = $guard->generateToken();
         $query                 = new GetAllUsers(0, 25);
         $data                  = [];
         $data['containerName'] = 'Zend Servicemanager';
@@ -41,6 +44,7 @@ class HomePageHandler implements RequestHandlerInterface
         $data['templateDocs']  = 'http://twig.sensiolabs.org/documentation';
         $data['users']         = $this->queryBus->handle($query);
         $data['queryParams']   = $request->getQueryParams();
+        $data['__csrf']        = $token;
 
         return new HtmlResponse($this->template->render('app::home-page', $data));
     }

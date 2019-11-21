@@ -17,7 +17,7 @@
                 <div class="alert alert-warning">{{ queryParams._reason }}</div>
             {% endif %}
             <div>
-                {% if users|length == 0 %} 
+                {% if users|length == 0 %}
                    {{ translate("NO_USER") }}
                 {% else %}
                     {{ plural("NUMBER_OF_USERS", users|length) | format(users|length) }}
@@ -40,6 +40,7 @@
             </h3>
 
                 <form method="post" action="{{ absolute_url('/users/add') }}">
+                    <input type="hidden" name="__csrf" value="{{ __csrf }}" />
                     <div class="form-group">
                         <label>First Name
                         <input type="text" name="first_name" class="form-control" placeholder="Enter user's first name" aria-describedby="firstNameHelp" required >
