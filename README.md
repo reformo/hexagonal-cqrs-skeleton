@@ -24,18 +24,19 @@ composer create-project reformo/hexagonal-cqrs-skeleton MyApplication
 ### FrontWeb
 
 ```bash
-composer run --timeout=0 serve-frontweb
+composer run --timeout=0 start-frontweb
 ```
 
 ### PrivateApi
 
 ```bash
-composer run --timeout=0 serve-private-api
+composer run --timeout=0 start-private-api
 ```
 
 
 ## Production Server using Swoole
 ### FrontWeb
+Since Swoole has problems with native PHP sessions, FrontWeb will give 500 Server Error until we fixed it.
 ```bash
 bin/zend-expressive-swoole start --module FrontWeb
 ```
