@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Domain\User\Persistence\Doctrine\Query;
+namespace Reformo\Domain\User\Persistence\Doctrine\SqlQuery;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\FetchMode;

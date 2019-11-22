@@ -38,6 +38,7 @@ class AddUserHandler implements RequestHandlerInterface
         if (! $guard->validateToken($token)) {
             $uri = $request->getAttribute('base-url') . '/?error=execution-failed' .
                 '&_reason=' . urlencode('CSRF Failed: CSRF token missing or incorrect');
+
             return new RedirectResponse($uri, 302);
         }
         $command = new RegisterUser(
@@ -56,6 +57,7 @@ class AddUserHandler implements RequestHandlerInterface
         } catch (Throwable $exception) {
             $uri = $request->getAttribute('base-url') . '/?error=execution-failed' .
                  '&_reason=' . urlencode($exception->getMessage());
+
             return new RedirectResponse($uri, 302);
         }
 

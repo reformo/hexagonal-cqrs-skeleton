@@ -6,6 +6,7 @@ namespace Reformo\Domain\User\Persistence\Doctrine;
 
 use Doctrine\DBAL\Connection;
 use Reformo\Common\Exception\ExecutionFailed;
+use Reformo\Common\Exception\InvalidArgument;
 use Reformo\Common\Interfaces\Email;
 use Reformo\Domain\User\Exception\CantUnregisterUserDoesNotExists;
 use Reformo\Domain\User\Exception\UserAlreadyExists;
@@ -13,9 +14,8 @@ use Reformo\Domain\User\Exception\UserNotFound;
 use Reformo\Domain\User\Interfaces\UserId;
 use Reformo\Domain\User\Interfaces\UserRepository as UserRepositoryInterface;
 use Reformo\Domain\User\Model\User;
-use Reformo\Domain\User\Persistence\Doctrine\Query\AddUser;
-use Reformo\Domain\User\Persistence\Doctrine\Query\GetUserByEmail;
-use Reformo\Domain\User\Persistence\Doctrine\Query\GetUserById;
+use Reformo\Domain\User\Persistence\Doctrine\SqlQuery\GetUserByEmail;
+use Reformo\Domain\User\Persistence\Doctrine\SqlQuery\GetUserById;
 use Throwable;
 use function sprintf;
 
@@ -52,7 +52,11 @@ class UserRepository implements UserRepositoryInterface
                 ['provided_email' => $user->email()->toString()]
             );
         } catch (UserNotFound $exception) {
-            AddUser::execute($this->connection, $user);
+            if (! $user instanceof User) {
+                throw InvalidArgument::create('Provided data is not a User object!');
+            }
+            $mapper = new UserMapper($user);
+            $this->connection->insert('users', $mapper->toDatabasePayload());
         }
     }
 
