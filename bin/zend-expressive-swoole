@@ -46,6 +46,7 @@ if (! isset($cwd)) {
 
 chdir(dirname(__DIR__));
 
+exec('composer clear-cache-files');
 
 require 'vendor/autoload.php';
 
