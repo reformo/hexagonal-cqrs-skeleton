@@ -133,7 +133,7 @@
         ],
         "start-private-api": [
             "@clear-cache-files",
-            "@serve-frontweb"
+            "@serve-private-api"
         ],
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
