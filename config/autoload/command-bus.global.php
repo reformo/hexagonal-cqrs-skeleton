@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use Reformo\Common\Factory\CommandHandlerFactory;
+use Reformo\Common\MessageBus\CommandHandlerFactory;
 use Reformo\Domain\User\Command\RegisterUserHandler;
 use Reformo\Domain\User\Command\UnregisterUserHandler;
 use Reformo\Domain\User\Command\UpdateUserPartiallyHandler;

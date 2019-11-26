@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use Reformo\Common\Factory\CommandHandlerFactory;
+use Reformo\Common\MessageBus\CommandHandlerFactory;
 use Reformo\Domain\User\Query\GetAllUsersHandler;
 use Reformo\Domain\User\Query\GetUserByIdHandler;
 

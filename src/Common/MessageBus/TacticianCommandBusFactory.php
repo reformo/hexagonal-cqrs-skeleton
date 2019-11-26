@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common\Factory;
+namespace Reformo\Common\MessageBus;
 
 use Interop\Container\ContainerInterface;
 use League\Tactician\CommandBus;
 use League\Tactician\Handler\CommandHandlerMiddleware;
 use League\Tactician\Handler\Mapping\MapByNamingConvention;
 use League\Tactician\Handler\Mapping\MethodName\Invoke;
-use Reformo\Common\Util\CommandClassNameInflector;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 class TacticianCommandBusFactory implements FactoryInterface

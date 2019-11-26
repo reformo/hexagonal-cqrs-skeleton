@@ -7,7 +7,7 @@ namespace Reformo\PrivateApi\Handler\Users;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Reformo\Common\Interfaces\QueryBus;
+use Reformo\Common\MessageBus\Interfaces\QueryBus;
 use Reformo\Domain\User\Query\GetUserById;
 use Zend\Diactoros\Response\JsonResponse;
 

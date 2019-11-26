@@ -103,6 +103,9 @@
             "cp config/autoload/doctrine.local.php.dist config/autoload/doctrine.local.php",
             "cp config/autoload/zend-expressive-swoole.local.php.dist config/autoload/zend-expressive-swoole.local.php"
         ],
+        "post-install-cmd": [
+            "composer dumpautoload -o"
+        ],
         "development-disable": "zf-development-mode disable",
         "development-enable": "zf-development-mode enable",
         "development-status": "zf-development-mode status",

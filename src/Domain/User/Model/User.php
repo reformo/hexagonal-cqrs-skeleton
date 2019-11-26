@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Reformo\Domain\User\Model;
 
 use DateTimeImmutable;
-use Reformo\Common\Interfaces\Email as EmailInterface;
 use Reformo\Common\ValueObject\Email;
+use Reformo\Common\ValueObject\Interfaces\Email as EmailInterface;
 use Reformo\Domain\User\Exception\InvalidFirstName;
 use Reformo\Domain\User\Interfaces\UserId as UserIdInterface;
 use Throwable;

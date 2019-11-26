@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common\Util;
+namespace Reformo\Common\MessageBus;
 
 use League\Tactician\CommandBus as TacticianCommandBus;
 

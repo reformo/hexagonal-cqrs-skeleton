@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common;
+namespace Reformo\Common\ValueObject;
 
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Reformo\Domain\User\Persistence\Doctrine;
 
 use Doctrine\DBAL\Connection;
-use Reformo\Common\Interfaces\Email;
+use Reformo\Common\ValueObject\Interfaces\Email;
 use Reformo\Domain\User\Interfaces\UserId;
 use Reformo\Domain\User\Interfaces\UserQuery as UserQueryInterface;
 use Reformo\Domain\User\Model\Users;

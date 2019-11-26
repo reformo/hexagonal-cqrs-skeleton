@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common\Factory;
+namespace Reformo\Common\MessageBus;
 
 use Interop\Container\ContainerInterface;
 use ReflectionClass;

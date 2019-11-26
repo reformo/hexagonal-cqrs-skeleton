@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Reformo\Domain\User\Interfaces;
 
-use Reformo\Common\Interfaces\Email;
+use Reformo\Common\ValueObject\Interfaces\Email;
 use Reformo\Domain\User\Interfaces\UserId as UserIdInterface;
 use Reformo\Domain\User\Model\Users;
 use Reformo\Domain\User\Persistence\Doctrine\ResultObject\User;

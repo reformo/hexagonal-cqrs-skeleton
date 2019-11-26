@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Reformo\Domain\User\Interfaces;
 
 use Reformo\Common\Exception\ExecutionFailed;
-use Reformo\Common\Interfaces\Email;
+use Reformo\Common\ValueObject\Interfaces\Email;
 use Reformo\Domain\User\Exception\UserNotFound;
 use Reformo\Domain\User\Model\User;
 

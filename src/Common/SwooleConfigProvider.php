@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Reformo\Common;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Reformo\Common\Commands\Swoole;
+use Reformo\Common\Console\Swoole;
 use Swoole\Http\Server as SwooleHttpServer;
 use Zend\Expressive\Swoole\HotCodeReload\FileWatcher\InotifyFileWatcher;
 use Zend\Expressive\Swoole\HotCodeReload\FileWatcherInterface;

@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common\Factory;
+namespace Reformo\Common\Middleware;
 
 use Interop\Container\ContainerInterface;
 use Psr\Http\Server\MiddlewareInterface;
-use Reformo\Common\Middleware\CustomResponseHeadersMiddleware;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 class CustomResponseHeadersMiddlewareFactory implements FactoryInterface

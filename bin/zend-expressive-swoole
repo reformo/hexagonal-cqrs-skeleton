@@ -15,7 +15,7 @@ namespace Zend\Expressive\Swoole\Command;
 use PackageVersions\Versions;
 use Symfony\Component\Console\Application as CommandLine;
 use Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
-use Reformo\Common\Commands\Swoole;
+use Reformo\Common\Console\Swoole;
 use Symfony\Component\Console\Input\ArgvInput;
 use function chdir;
 use function file_exists;

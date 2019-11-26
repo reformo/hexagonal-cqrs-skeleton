@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common\ValueObject;
+namespace Reformo\Common\Middleware\ContentNegotiation;
 
 use function count;
 use function explode;

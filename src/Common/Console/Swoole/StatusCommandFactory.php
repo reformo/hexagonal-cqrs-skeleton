@@ -5,7 +5,7 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common\Commands\Swoole;
+namespace Reformo\Common\Console\Swoole;
 
 use Psr\Container\ContainerInterface;
 use Zend\Expressive\Swoole\PidManager;

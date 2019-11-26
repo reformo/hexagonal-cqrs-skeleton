@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 use Reformo\Common\Middleware\CustomResponseHeadersMiddleware;
-use Reformo\Common\Factory\CustomResponseHeadersMiddlewareFactory;
+use Reformo\Common\Middleware\CustomResponseHeadersMiddlewareFactory;
 use Zend\Expressive\Helper;
 
 return [

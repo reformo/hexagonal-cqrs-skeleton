@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Reformo\Common\ValueObject;
 
-use Reformo\Common\Interfaces\Email as EmailInterface;
+use Reformo\Common\ValueObject\Interfaces\Email as EmailInterface;
 use Webmozart\Assert\Assert;
 
 class Email implements EmailInterface

@@ -25,7 +25,7 @@ class RequestHandlerFactory implements FactoryInterface
         $handlerClass = new ReflectionClass($requestedName);
 
         /**
-         * @var $handlerObject RequestHandler
+         * @var RequestHandler
          */
         return $handlerClass->newInstanceArgs($arguments);
     }

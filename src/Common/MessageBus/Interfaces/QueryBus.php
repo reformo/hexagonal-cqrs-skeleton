@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common\Interfaces;
+namespace Reformo\Common\MessageBus\Interfaces;
 
 interface QueryBus
 {

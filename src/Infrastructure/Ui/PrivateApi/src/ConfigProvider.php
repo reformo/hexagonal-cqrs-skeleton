@@ -47,7 +47,6 @@ class ConfigProvider
         return [
             'invokables' => [],
             'factories'  => [
-                Handler\ApiErrorHandler::class => RequestHandlerFactory::class,
                 Handler\Users\Users::class => RequestHandlerFactory::class,
                 Handler\Users\UserDetails::class => RequestHandlerFactory::class,
                 Handler\Users\RegisterUser::class => RequestHandlerFactory::class,

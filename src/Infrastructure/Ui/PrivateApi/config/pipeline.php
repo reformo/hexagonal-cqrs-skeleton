@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Psr\Container\ContainerInterface;
-use Reformo\Common\Middleware\ApiContentNegotiationMiddleware;
+use Reformo\Common\Middleware\ContentNegotiation\ApiContentNegotiationMiddleware;
 use Reformo\Common\Middleware\CustomResponseHeadersMiddleware;
 use Zend\Expressive\Application;
 use Zend\Expressive\Handler\NotFoundHandler;
