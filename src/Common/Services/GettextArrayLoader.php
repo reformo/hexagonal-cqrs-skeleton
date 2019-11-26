@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common;
+namespace Reformo\Common\Services;
 
 use Gettext\Loader\Loader;
 use Gettext\Translation;

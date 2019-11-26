@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Reformo\Domain\User\Persistence\Doctrine\ResultObject;
 
 use JsonSerializable;
-use Reformo\Common\Abstracts\ResultObject;
+use Reformo\Common\Services\Persistence\ResultObject;
 
 class User implements JsonSerializable
 {

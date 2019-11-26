@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common\Util;
+namespace Reformo\Common\Services;
 
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;

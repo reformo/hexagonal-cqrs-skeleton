@@ -8,7 +8,7 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\FetchMode;
 use Reformo\Common\Exception\ExecutionFailed;
 use Reformo\Common\Exception\InvalidArgument;
-use Reformo\Common\Query;
+use Reformo\Common\Services\Persistence\SqlQuery;
 use Reformo\Domain\User\Exception\UserNotFound;
 use Reformo\Domain\User\Persistence\Doctrine\ResultObject\User;
 use Throwable;
@@ -18,7 +18,7 @@ use function sprintf;
 
 final class GetUserByEmail
 {
-    use Query;
+    use SqlQuery;
 
     private static $sql = <<<SQL
         SELECT *

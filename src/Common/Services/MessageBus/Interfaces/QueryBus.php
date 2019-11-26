@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common\MessageBus\Interfaces;
+namespace Reformo\Common\Services\MessageBus\Interfaces;
 
-interface CommandBus
+interface QueryBus
 {
     /**
      * Executes the given command and optionally returns a value
@@ -13,5 +13,5 @@ interface CommandBus
      *
      * @var object
      */
-    public function handle(object $command);
+    public function handle(object $query);
 }

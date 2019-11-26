@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common\Abstracts;
+namespace Reformo\Common\Services\Persistence;
 
 use Iterator;
 use JsonSerializable;

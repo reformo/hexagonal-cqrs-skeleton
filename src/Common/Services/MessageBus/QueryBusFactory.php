@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common\MessageBus;
+namespace Reformo\Common\Services\MessageBus;
 
 use Interop\Container\ContainerInterface;
 use League\Tactician\CommandBus;

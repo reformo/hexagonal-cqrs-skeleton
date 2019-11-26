@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Reformo\Common\Factory;
 
 use Interop\Container\ContainerInterface;
-use Reformo\Common\Util\TwigExtension;
+use Reformo\Common\Services\TwigExtension;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 class TwigExtensionFactory implements FactoryInterface

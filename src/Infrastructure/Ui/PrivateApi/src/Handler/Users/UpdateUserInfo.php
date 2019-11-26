@@ -7,7 +7,7 @@ namespace Reformo\PrivateApi\Handler\Users;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Reformo\Common\MessageBus\Interfaces\CommandBus;
+use Reformo\Common\Services\MessageBus\Interfaces\CommandBus;
 use Reformo\Domain\User\Command\UpdateUserPartially;
 use Zend\Diactoros\Response\EmptyResponse;
 

@@ -8,7 +8,7 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\FetchMode;
 use Reformo\Common\Exception\ExecutionFailed;
 use Reformo\Common\Exception\InvalidArgument;
-use Reformo\Common\Query;
+use Reformo\Common\Services\Persistence\SqlQuery;
 use Reformo\Domain\User\Model\Users;
 use Reformo\Domain\User\Persistence\Doctrine\ResultObject\User;
 use Throwable;
@@ -16,7 +16,7 @@ use function array_key_exists;
 
 final class GetAllUsers
 {
-    use Query;
+    use SqlQuery;
 
     private static $sql = <<<SQL
         SELECT *

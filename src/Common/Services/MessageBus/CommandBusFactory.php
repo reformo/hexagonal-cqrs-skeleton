@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common\MessageBus;
+namespace Reformo\Common\Services\MessageBus;
 
 use Interop\Container\ContainerInterface;
 use League\Tactician\CommandBus as TacticianCommandBus;
-use Reformo\Common\MessageBus\Interfaces\CommandBus as CommandBusInterface;
+use Reformo\Common\Services\MessageBus\Interfaces\CommandBus as CommandBusInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 class CommandBusFactory implements FactoryInterface

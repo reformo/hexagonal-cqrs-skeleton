@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Reformo\Common;
+namespace Reformo\Common\Services\Persistence;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Driver\Statement;
 use PDO;
 use function gettype;
 
-trait Query
+trait SqlQuery
 {
     /** @var $connection Connection */
     private $connection;

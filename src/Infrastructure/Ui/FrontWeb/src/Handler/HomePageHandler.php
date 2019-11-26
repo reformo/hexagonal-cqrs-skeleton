@@ -7,7 +7,7 @@ namespace Reformo\FrontWeb\Handler;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Reformo\Common\MessageBus\Interfaces\QueryBus;
+use Reformo\Common\Services\MessageBus\Interfaces\QueryBus;
 use Reformo\Domain\User\Query\GetAllUsers;
 use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Expressive\Csrf\CsrfMiddleware;

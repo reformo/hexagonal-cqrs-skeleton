@@ -3,7 +3,8 @@ declare(strict_types=1);
 
 use Gettext\Generator\MoGenerator;
 use Gettext\Generator\PoGenerator;
-use Reformo\Common\GettextArrayLoader;
+use Reformo\Common\Services\GettextArrayLoader;
+
 chdir(__DIR__ . '/../');
 
 require 'vendor/autoload.php';

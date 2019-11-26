@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Ramsey\Uuid\Uuid;
-use Reformo\Common\MessageBus\Interfaces\CommandBus;
+use Reformo\Common\Services\MessageBus\Interfaces\CommandBus;
 use Reformo\Domain\User\Command\RegisterUser as RegisterUserCommand;
 use Zend\Diactoros\Response\EmptyResponse;
 
