@@ -6,7 +6,6 @@ namespace Reformo\Domain\User\Model;
 
 use DateTimeImmutable;
 use Reformo\Common\ValueObject\Email;
-use Reformo\Common\ValueObject\Interfaces\Email as EmailInterface;
 use Reformo\Domain\User\Exception\InvalidFirstName;
 use Reformo\Domain\User\Interfaces\UserId as UserIdInterface;
 use Throwable;
@@ -24,7 +23,7 @@ class User
 
     private function __construct(
         UserIdInterface $id,
-        EmailInterface $email,
+        Email $email,
         string $firstName,
         string $lastName,
         DateTimeImmutable $createdAt
@@ -63,7 +62,7 @@ class User
         return $this->id;
     }
 
-    public function email() : EmailInterface
+    public function email() : Email
     {
         return $this->email;
     }

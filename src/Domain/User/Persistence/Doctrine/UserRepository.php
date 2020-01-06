@@ -7,7 +7,7 @@ namespace Reformo\Domain\User\Persistence\Doctrine;
 use Doctrine\DBAL\Connection;
 use Reformo\Common\Exception\ExecutionFailed;
 use Reformo\Common\Exception\InvalidArgument;
-use Reformo\Common\ValueObject\Interfaces\Email;
+use Reformo\Common\ValueObject\Email;
 use Reformo\Domain\User\Exception\CantUnregisterUserDoesNotExists;
 use Reformo\Domain\User\Exception\UserAlreadyExists;
 use Reformo\Domain\User\Exception\UserNotFound;

@@ -26,9 +26,7 @@ class RegisterUser implements RequestHandlerInterface
         $this->commandBus = $commandBus;
     }
 
-    /**
-     * @throws Exception
-     */
+
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
         $requestParameters = $request->getParsedBody();
