@@ -34,7 +34,6 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
     $app->pipe(
         static function (ServerRequestInterface $request, RequestHandlerInterface $handler) use ($container) : ResponseInterface {
             $config = $container->get('config');
-
             return $handler->handle($request->withAttribute('moduleName', $config['module-name']));
         }
     );
