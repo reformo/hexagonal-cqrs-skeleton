@@ -1,6 +1,6 @@
 <?php
 /**
- * @see       https://github.com/zendframework/zend-expressive-swoole for the canonical source repository
+ * @see       https://github.com/mezzio/mezzio-swoole for the canonical source repository
  */
 
 declare(strict_types=1);
@@ -22,7 +22,7 @@ Reload the web server. Sends a SIGUSR1 signal to master process and reload
 all worker processes.
 
 This command is only relevant when the server was started using the
---daemonize option, and the zend-expressive-swoole.swoole-http-server.mode
+--daemonize option, and the mezzio-swoole.swoole-http-server.mode
 configuration value is set to SWOOLE_PROCESS.
 EOH;
 

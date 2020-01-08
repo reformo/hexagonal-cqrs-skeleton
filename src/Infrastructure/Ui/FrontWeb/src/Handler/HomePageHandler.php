@@ -9,9 +9,9 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Reformo\Common\Services\MessageBus\Interfaces\QueryBus;
 use Reformo\Domain\User\Query\GetAllUsers;
-use Zend\Diactoros\Response\HtmlResponse;
-use Zend\Expressive\Csrf\CsrfMiddleware;
-use Zend\Expressive\Template\TemplateRendererInterface;
+use Laminas\Diactoros\Response\HtmlResponse;
+use Mezzio\Csrf\CsrfMiddleware;
+use Mezzio\Template\TemplateRendererInterface;
 
 class HomePageHandler implements RequestHandlerInterface
 {

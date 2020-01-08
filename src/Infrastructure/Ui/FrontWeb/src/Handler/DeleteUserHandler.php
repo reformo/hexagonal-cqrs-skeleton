@@ -11,7 +11,7 @@ use Reformo\Common\Services\MessageBus\Interfaces\CommandBus;
 use Reformo\Domain\User\Command\UnregisterUser;
 use Reformo\Domain\User\Exception\UserNotFound;
 use Throwable;
-use Zend\Diactoros\Response\RedirectResponse;
+use Laminas\Diactoros\Response\RedirectResponse;
 use function http_build_query;
 use function urlencode;
 

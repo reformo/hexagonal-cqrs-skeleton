@@ -1,6 +1,6 @@
 <?php
 /**
- * @see       https://github.com/zendframework/zend-expressive-swoole for the canonical source repository
+ * @see       https://github.com/mezzio/mezzio-swoole for the canonical source repository
  */
 
 declare(strict_types=1);
@@ -8,7 +8,7 @@ declare(strict_types=1);
 namespace Reformo\Common\Console\Swoole;
 
 use Psr\Container\ContainerInterface;
-use Zend\Expressive\Swoole\PidManager;
+use Mezzio\Swoole\PidManager;
 
 class StopCommandFactory
 {

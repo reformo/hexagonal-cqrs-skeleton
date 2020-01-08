@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Reformo\Common\Services\MessageBus\Interfaces\CommandBus;
 use Reformo\Domain\User\Command\UpdateUserPartially;
-use Zend\Diactoros\Response\EmptyResponse;
+use Laminas\Diactoros\Response\EmptyResponse;
 
 class UpdateUserInfo implements RequestHandlerInterface
 {

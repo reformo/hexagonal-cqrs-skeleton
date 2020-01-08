@@ -6,7 +6,7 @@ namespace Reformo\Common\Exception;
 
 use Exception;
 use Reformo\Domain\DomainException;
-use Zend\ProblemDetails\Exception\ProblemDetailsExceptionInterface;
+use Mezzio\ProblemDetails\Exception\ProblemDetailsExceptionInterface;
 
 class ExecutionFailed extends Exception implements ProblemDetailsExceptionInterface
 {

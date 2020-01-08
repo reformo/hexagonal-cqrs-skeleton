@@ -13,7 +13,7 @@
         "psr-15",
         "zf",
         "zendframework",
-        "zend-expressive",
+        "mezzio",
         "cqrs",
         "hexagonal",
         "tactician",
@@ -26,12 +26,12 @@
     "extra": {
         "zf": {
             "component-whitelist": [
-                "zendframework/zend-expressive",
-                "zendframework/zend-expressive-helpers",
-                "zendframework/zend-expressive-router",
-                "zendframework/zend-httphandlerrunner",
-                "zendframework/zend-expressive-fastroute",
-                "zendframework/zend-expressive-twigrenderer"
+                "mezzio/mezzio",
+                "mezzio/mezzio-helpers",
+                "mezzio/mezzio-router",
+                "laminas/laminas-httphandlerrunner",
+                "mezzio/mezzio-fastroute",
+                "mezzio/mezzio-twigrenderer"
             ]
         }
     },
@@ -56,20 +56,21 @@
         "twig/extensions": "^1.5",
         "vlucas/phpdotenv": "^3.6",
         "webmozart/assert": "^1.5",
-        "zendframework/zend-component-installer": "^2.1.1",
-        "zendframework/zend-config-aggregator": "^1.0",
-        "zendframework/zend-diactoros": "^1.7.1 || ^2.0",
-        "zendframework/zend-expressive": "^3.0.1",
-        "zendframework/zend-expressive-csrf": "^1.0",
-        "zendframework/zend-expressive-fastroute": "^3.0",
-        "zendframework/zend-expressive-helpers": "^5.0",
-        "zendframework/zend-expressive-session": "^1.3",
-        "zendframework/zend-expressive-session-ext": "^1.7",
-        "zendframework/zend-expressive-swoole": "^2.4",
-        "zendframework/zend-expressive-twigrenderer": "^2.0",
-        "zendframework/zend-problem-details": "^1.0",
-        "zendframework/zend-servicemanager": "^3.3",
-        "zendframework/zend-stdlib": "^3.1"
+        "laminas/laminas-component-installer": "^2.1.1",
+        "laminas/laminas-config-aggregator": "^1.0",
+        "laminas/laminas-diactoros": "^1.7.1 || ^2.0",
+        "mezzio/mezzio": "^3.0.1",
+        "mezzio/mezzio-csrf": "^1.0",
+        "mezzio/mezzio-fastroute": "^3.0",
+        "mezzio/mezzio-helpers": "^5.0",
+        "mezzio/mezzio-session": "^1.3",
+        "mezzio/mezzio-session-ext": "^1.7",
+        "mezzio/mezzio-swoole": "^2.4",
+        "mezzio/mezzio-twigrenderer": "^2.0",
+        "mezzio/mezzio-problem-details": "^1.0",
+        "laminas/laminas-servicemanager": "^3.3",
+        "laminas/laminas-stdlib": "^3.1",
+        "laminas/laminas-dependency-plugin": "^1.0"
     },
     "require-dev": {
         "behat/behat": "^3.5",
@@ -80,8 +81,8 @@
         "rskuipers/php-assumptions": "^0.8.0",
         "squizlabs/php_codesniffer": "^3.5",
         "swoole/ide-helper": "^4.4",
-        "zendframework/zend-expressive-tooling": "^1.0",
-        "zfcampus/zf-development-mode": "^3.1"
+        "mezzio/mezzio-tooling": "^1.0",
+        "laminas/laminas-development-mode": "^3.1"
     },
     "autoload": {
         "psr-4": {
@@ -102,14 +103,14 @@
             "@development-enable",
             "cp .env.dist .env",
             "cp config/autoload/doctrine.local.php.dist config/autoload/doctrine.local.php",
-            "cp config/autoload/zend-expressive-swoole.local.php.dist config/autoload/zend-expressive-swoole.local.php"
+            "cp config/autoload/mezzio-swoole.local.php.dist config/autoload/mezzio-swoole.local.php"
         ],
         "post-install-cmd": [
             "composer dumpautoload -o"
         ],
-        "development-disable": "zf-development-mode disable",
-        "development-enable": "zf-development-mode enable",
-        "development-status": "zf-development-mode status",
+        "development-disable": "laminas-development-mode disable",
+        "development-enable": "laminas-development-mode enable",
+        "development-status": "laminas-development-mode status",
         "expressive": "expressive --ansi",
         "generate-mo-files": "php bin/generate-mo-files.php",
         "check": [
@@ -120,7 +121,7 @@
         "clear-config-cache": "php bin/clear-config-cache.php",
         "clear-route-cache": "php bin/clear-route-cache.php",
         "clear-twig-cache": "php bin/clear-twig-cache.php",
-        "clear-cache-files" : [
+        "clear-cache-files": [
             "@clear-config-cache",
             "@clear-route-cache",
             "@clear-twig-cache",

@@ -1,11 +1,11 @@
 # WORK IN PROGRESS
-# Hexagonal (Ports and Adapters) Architecture and CQRS Ready Zend Expressive Skeleton.
+# Hexagonal (Ports and Adapters) Architecture and CQRS Ready Laminas Mezzio Skeleton.
 
 
 An opinionated framework to develop CQRS applications using hexagonal architecture structure.
 
 ### Built on basically these libraries:
-- Zend Expressive (Zend ServiceManager, FastRoute, Twig)
+- Laminas Mezzio (Laminas ServiceManager, FastRoute, Twig)
 - Tactician CommandBus by thephpleague.com
 - Doctrine DBAL
 - Symfony Console
@@ -38,9 +38,9 @@ composer run --timeout=0 start-private-api
 ### FrontWeb
 Since Swoole has problems with native PHP sessions, FrontWeb will give 500 Server Error until we fixed it.
 ```bash
-bin/zend-expressive-swoole start --module FrontWeb
+bin/mezzio-swoole start --module FrontWeb
 ```
 ### PrivateApi
 ```bash
-bin/zend-expressive-swoole start --module PrivateApi
+bin/mezzio-swoole start --module PrivateApi
 ```

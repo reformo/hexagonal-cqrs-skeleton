@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Reformo\PrivateApi;
 
 use Reformo\Common\Factory\RequestHandlerFactory;
-use Zend\Expressive\Application;
-use Zend\Expressive\MiddlewareFactory;
+use Mezzio\Application;
+use Mezzio\MiddlewareFactory;
 
 /**
  * The configuration provider for the App module

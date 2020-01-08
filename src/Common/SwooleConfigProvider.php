@@ -7,22 +7,22 @@ namespace Reformo\Common;
 use Psr\Http\Message\ServerRequestInterface;
 use Reformo\Common\Console\Swoole;
 use Swoole\Http\Server as SwooleHttpServer;
-use Zend\Expressive\Swoole\HotCodeReload\FileWatcher\InotifyFileWatcher;
-use Zend\Expressive\Swoole\HotCodeReload\FileWatcherInterface;
-use Zend\Expressive\Swoole\HotCodeReload\Reloader;
-use Zend\Expressive\Swoole\HotCodeReload\ReloaderFactory;
-use Zend\Expressive\Swoole\HttpServerFactory;
-use Zend\Expressive\Swoole\Log;
-use Zend\Expressive\Swoole\PidManager;
-use Zend\Expressive\Swoole\PidManagerFactory;
-use Zend\Expressive\Swoole\ServerRequestSwooleFactory;
-use Zend\Expressive\Swoole\StaticResourceHandler;
-use Zend\Expressive\Swoole\StaticResourceHandlerFactory;
-use Zend\Expressive\Swoole\StaticResourceHandlerInterface;
-use Zend\Expressive\Swoole\SwooleRequestHandlerRunner;
-use Zend\Expressive\Swoole\SwooleRequestHandlerRunnerFactory;
-use Zend\Expressive\Swoole\WhoopsPrettyPageHandlerDelegator;
-use Zend\HttpHandlerRunner\RequestHandlerRunner;
+use Mezzio\Swoole\HotCodeReload\FileWatcher\InotifyFileWatcher;
+use Mezzio\Swoole\HotCodeReload\FileWatcherInterface;
+use Mezzio\Swoole\HotCodeReload\Reloader;
+use Mezzio\Swoole\HotCodeReload\ReloaderFactory;
+use Mezzio\Swoole\HttpServerFactory;
+use Mezzio\Swoole\Log;
+use Mezzio\Swoole\PidManager;
+use Mezzio\Swoole\PidManagerFactory;
+use Mezzio\Swoole\ServerRequestSwooleFactory;
+use Mezzio\Swoole\StaticResourceHandler;
+use Mezzio\Swoole\StaticResourceHandlerFactory;
+use Mezzio\Swoole\StaticResourceHandlerInterface;
+use Mezzio\Swoole\SwooleRequestHandlerRunner;
+use Mezzio\Swoole\SwooleRequestHandlerRunnerFactory;
+use Mezzio\Swoole\WhoopsPrettyPageHandlerDelegator;
+use Laminas\HttpHandlerRunner\RequestHandlerRunner;
 use const PHP_SAPI;
 use function extension_loaded;
 
@@ -34,7 +34,7 @@ class SwooleConfigProvider
             ? ['dependencies' => $this->getDependencies()]
             : [];
 
-        $config['zend-expressive-swoole'] = $this->getDefaultConfig();
+        $config['mezzio-swoole'] = $this->getDefaultConfig();
 
         return PHP_SAPI === 'cli' && extension_loaded('swoole') ? $config : [];
     }
@@ -85,7 +85,7 @@ class SwooleConfigProvider
                 FileWatcherInterface::class           => InotifyFileWatcher::class,
             ],
             'delegators' => [
-                'Zend\Expressive\WhoopsPageHandler' => [
+                'Mezzio\WhoopsPageHandler' => [
                     WhoopsPrettyPageHandlerDelegator::class,
                 ],
             ],

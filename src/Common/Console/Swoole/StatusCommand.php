@@ -1,6 +1,6 @@
 <?php
 /**
- * @see       https://github.com/zendframework/zend-expressive-swoole for the canonical source repository
+ * @see       https://github.com/mezzio/mezzio-swoole for the canonical source repository
  */
 
 declare(strict_types=1);
@@ -10,8 +10,8 @@ namespace Reformo\Common\Console\Swoole;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Zend\Expressive\Swoole\Command\IsRunningTrait;
-use Zend\Expressive\Swoole\PidManager;
+use Mezzio\Swoole\Command\IsRunningTrait;
+use Mezzio\Swoole\PidManager;
 
 class StatusCommand extends Command
 {

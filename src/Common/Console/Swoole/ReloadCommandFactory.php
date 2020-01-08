@@ -1,6 +1,6 @@
 <?php
 /**
- * @see       https://github.com/zendframework/zend-expressive-swoole for the canonical source repository
+ * @see       https://github.com/mezzio/mezzio-swoole for the canonical source repository
  */
 
 declare(strict_types=1);
@@ -15,7 +15,7 @@ class ReloadCommandFactory
     public function __invoke(ContainerInterface $container) : ReloadCommand
     {
         $config = $container->has('config') ? $container->get('config') : [];
-        $mode   = $config['zend-expressive-swoole']['swoole-http-server']['mode'] ?? SWOOLE_BASE;
+        $mode   = $config['mezzio-swoole']['swoole-http-server']['mode'] ?? SWOOLE_BASE;
 
         return new ReloadCommand($mode);
     }

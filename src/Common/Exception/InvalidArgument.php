@@ -6,7 +6,7 @@ namespace Reformo\Common\Exception;
 
 use InvalidArgumentException;
 use Reformo\Domain\DomainException;
-use Zend\ProblemDetails\Exception\ProblemDetailsExceptionInterface;
+use Mezzio\ProblemDetails\Exception\ProblemDetailsExceptionInterface;
 
 class InvalidArgument extends InvalidArgumentException implements ProblemDetailsExceptionInterface
 {

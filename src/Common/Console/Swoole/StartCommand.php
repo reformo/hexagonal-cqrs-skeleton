@@ -10,10 +10,10 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Zend\Expressive\Application;
-use Zend\Expressive\MiddlewareFactory;
-use Zend\Expressive\Swoole\Command\IsRunningTrait;
-use Zend\Expressive\Swoole\PidManager;
+use Mezzio\Application;
+use Mezzio\MiddlewareFactory;
+use Mezzio\Swoole\Command\IsRunningTrait;
+use Mezzio\Swoole\PidManager;
 use function file_exists;
 use function sys_get_temp_dir;
 
@@ -77,7 +77,7 @@ EOH;
     protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         $config            = $this->container->get('config');
-        $pidFileFromConfig = $config['zend-expressive-swoole']['swoole-http-server']['options']['pid_file'];
+        $pidFileFromConfig = $config['mezzio-swoole']['swoole-http-server']['options']['pid_file'];
         $this->pidManager  = new PidManager($pidFileFromConfig ?? sys_get_temp_dir() . '/zend-swoole.pid');
         if ($this->isRunning()) {
             $output->writeln('<error>Server is already running!</error>');

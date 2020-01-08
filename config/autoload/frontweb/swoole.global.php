@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 return [
-    'zend-expressive-swoole' => [
+    'mezzio-swoole' => [
         'swoole-http-server' => [
             'port' => 8080,
             'options' => [

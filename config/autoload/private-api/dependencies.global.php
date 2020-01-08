@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Reformo\Common\Middleware\CustomResponseHeadersMiddleware;
 use Reformo\Common\Middleware\CustomResponseHeadersMiddlewareFactory;
-use Zend\Expressive\Helper;
+use Mezzio\Helper;
 
 return [
     'dependencies' => [

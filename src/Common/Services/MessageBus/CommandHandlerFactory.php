@@ -7,7 +7,7 @@ namespace Reformo\Common\Services\MessageBus;
 use Interop\Container\ContainerInterface;
 use ReflectionClass;
 use Selami\Stdlib\Resolver;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 
 class CommandHandlerFactory implements FactoryInterface
 {

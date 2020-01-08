@@ -11,7 +11,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Ramsey\Uuid\Uuid;
 use Reformo\Common\Services\MessageBus\Interfaces\CommandBus;
 use Reformo\Domain\User\Command\RegisterUser as RegisterUserCommand;
-use Zend\Diactoros\Response\EmptyResponse;
+use Laminas\Diactoros\Response\EmptyResponse;
 
 class RegisterUser implements RequestHandlerInterface
 {

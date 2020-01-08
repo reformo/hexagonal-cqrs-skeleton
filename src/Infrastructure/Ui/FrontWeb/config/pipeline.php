@@ -8,16 +8,16 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Reformo\Common\Middleware\BaseUrlMiddleware;
 use Reformo\Common\Middleware\LocalizationMiddleware;
-use Zend\Expressive\Application;
-use Zend\Expressive\Csrf\CsrfMiddleware;
-use Zend\Expressive\Handler\NotFoundHandler;
-use Zend\Expressive\Helper\ServerUrlMiddleware;
-use Zend\Expressive\Helper\UrlHelperMiddleware;
-use Zend\Expressive\MiddlewareFactory;
-use Zend\Expressive\Router\Middleware\DispatchMiddleware;
-use Zend\Expressive\Router\Middleware\RouteMiddleware;
-use Zend\Expressive\Session\SessionMiddleware;
-use Zend\Stratigility\Middleware\ErrorHandler;
+use Mezzio\Application;
+use Mezzio\Csrf\CsrfMiddleware;
+use Mezzio\Handler\NotFoundHandler;
+use Mezzio\Helper\ServerUrlMiddleware;
+use Mezzio\Helper\UrlHelperMiddleware;
+use Mezzio\MiddlewareFactory;
+use Mezzio\Router\Middleware\DispatchMiddleware;
+use Mezzio\Router\Middleware\RouteMiddleware;
+use Mezzio\Session\SessionMiddleware;
+use Laminas\Stratigility\Middleware\ErrorHandler;
 
 /**
  * @var Application $app
@@ -58,7 +58,7 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
     // - $app->pipe('/files', $filesMiddleware);
 
     // Register the routing middleware in the middleware pipeline.
-    // This middleware registers the Zend\Expressive\Router\RouteResult request attribute.
+    // This middleware registers the Mezzio\Router\RouteResult request attribute.
     $app->pipe(RouteMiddleware::class);
 
     // Seed the UrlHelper with the routing results:

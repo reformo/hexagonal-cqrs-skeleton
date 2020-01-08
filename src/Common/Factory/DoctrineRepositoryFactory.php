@@ -6,7 +6,7 @@ namespace Reformo\Common\Factory;
 
 use Doctrine\DBAL\Connection;
 use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 use function str_replace;
 
 class DoctrineRepositoryFactory implements FactoryInterface

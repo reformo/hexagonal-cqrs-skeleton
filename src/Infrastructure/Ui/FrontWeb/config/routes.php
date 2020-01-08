@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use Psr\Container\ContainerInterface;
 use Reformo\FrontWeb\ConfigProvider as FrontWebConfigProvider;
-use Zend\Expressive\Application;
-use Zend\Expressive\MiddlewareFactory;
+use Mezzio\Application;
+use Mezzio\MiddlewareFactory;
 
 /**
  * @var Application $app

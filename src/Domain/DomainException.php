@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Reformo\Domain;
 
-use Zend\ProblemDetails\Exception\CommonProblemDetailsExceptionTrait;
+use Mezzio\ProblemDetails\Exception\CommonProblemDetailsExceptionTrait;
 use function array_merge;
 
 trait DomainException

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use Psr\Container\ContainerInterface;
 use Reformo\PrivateApi\ConfigProvider as PrivateApiConfigProvider;
-use Zend\Expressive\Application;
-use Zend\Expressive\MiddlewareFactory;
+use Mezzio\Application;
+use Mezzio\MiddlewareFactory;
 
 /**
  * @var Application $app

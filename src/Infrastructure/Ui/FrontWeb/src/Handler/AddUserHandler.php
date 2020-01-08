@@ -12,8 +12,8 @@ use Reformo\Common\Services\MessageBus\Interfaces\CommandBus;
 use Reformo\Domain\User\Command\RegisterUser;
 use Reformo\Domain\User\Exception\UserAlreadyExists;
 use Throwable;
-use Zend\Diactoros\Response\RedirectResponse;
-use Zend\Expressive\Csrf\CsrfMiddleware;
+use Laminas\Diactoros\Response\RedirectResponse;
+use Mezzio\Csrf\CsrfMiddleware;
 use function http_build_query;
 use function urlencode;
 

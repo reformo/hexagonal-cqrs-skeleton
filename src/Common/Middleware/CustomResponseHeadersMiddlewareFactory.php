@@ -6,7 +6,7 @@ namespace Reformo\Common\Middleware;
 
 use Interop\Container\ContainerInterface;
 use Psr\Http\Server\MiddlewareInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 
 class CustomResponseHeadersMiddlewareFactory implements FactoryInterface
 {

@@ -6,7 +6,7 @@ namespace Reformo\Common\Factory;
 
 use Interop\Container\ContainerInterface;
 use Reformo\Common\Services\TwigExtension;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 
 class TwigExtensionFactory implements FactoryInterface
 {

@@ -8,7 +8,7 @@ use Interop\Container\ContainerInterface;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 use ReflectionClass;
 use Selami\Stdlib\Resolver;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 
 class RequestHandlerFactory implements FactoryInterface
 {

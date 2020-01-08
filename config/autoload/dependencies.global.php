@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Zend\ServiceManager\Proxy\LazyServiceFactory;
+use Laminas\ServiceManager\Proxy\LazyServiceFactory;
 use Doctrine\DBAL\Connection as DoctrineConnection;
 use League\Tactician\CommandBus as TacticianCommandBus;
 use Reformo\Common\Services\MessageBus\TacticianCommandBusFactory;

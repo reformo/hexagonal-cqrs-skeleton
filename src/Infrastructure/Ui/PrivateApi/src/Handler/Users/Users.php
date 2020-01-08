@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Reformo\Common\Services\MessageBus\Interfaces\QueryBus;
 use Reformo\Domain\User\Query\GetAllUsers;
-use Zend\Diactoros\Response\JsonResponse;
+use Laminas\Diactoros\Response\JsonResponse;
 
 class Users implements RequestHandlerInterface
 {

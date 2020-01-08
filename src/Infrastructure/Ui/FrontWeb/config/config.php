@@ -3,30 +3,30 @@
 declare(strict_types=1);
 
 use Reformo\Common\DotEnvConfigProvider;
-use Zend\ConfigAggregator\ArrayProvider;
-use Zend\ConfigAggregator\ConfigAggregator;
-use Zend\ConfigAggregator\PhpFileProvider;
+use Laminas\ConfigAggregator\ArrayProvider;
+use Laminas\ConfigAggregator\ConfigAggregator;
+use Laminas\ConfigAggregator\PhpFileProvider;
 
 // To enable or disable caching, set the `ConfigAggregator::ENABLE_CACHE` boolean in
 // `config/autoload/local.php`.
 $cacheConfig = ['config_cache_path' => 'data/cache/frontweb-config-cache.php'];
 $aggregator  = new ConfigAggregator([
     DotEnvConfigProvider::class,
-    Zend\HttpHandlerRunner\ConfigProvider::class,
-    Zend\Expressive\Twig\ConfigProvider::class,
-    Zend\Expressive\Router\FastRouteRouter\ConfigProvider::class,
+    Laminas\HttpHandlerRunner\ConfigProvider::class,
+    Mezzio\Twig\ConfigProvider::class,
+    Mezzio\Router\FastRouteRouter\ConfigProvider::class,
     // Include cache configuration
     new ArrayProvider($cacheConfig),
 
-    Zend\Expressive\Helper\ConfigProvider::class,
-    Zend\Expressive\ConfigProvider::class,
-    Zend\Expressive\Router\ConfigProvider::class,
-    Zend\Expressive\Session\ConfigProvider::class,
-    Zend\Expressive\Session\Ext\ConfigProvider::class,
-    Zend\Expressive\Csrf\ConfigProvider::class,
+    Mezzio\Helper\ConfigProvider::class,
+    Mezzio\ConfigProvider::class,
+    Mezzio\Router\ConfigProvider::class,
+    Mezzio\Session\ConfigProvider::class,
+    Mezzio\Session\Ext\ConfigProvider::class,
+    Mezzio\Csrf\ConfigProvider::class,
     // Swoole config to overwrite some services (if installed)
-    class_exists(Zend\Expressive\Swoole\ConfigProvider::class)
-        ? Zend\Expressive\Swoole\ConfigProvider::class
+    class_exists(Mezzio\Swoole\ConfigProvider::class)
+        ? Mezzio\Swoole\ConfigProvider::class
         : static function () {
             return [];
         },

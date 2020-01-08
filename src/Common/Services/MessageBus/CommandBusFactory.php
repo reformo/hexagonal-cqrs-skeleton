@@ -7,7 +7,7 @@ namespace Reformo\Common\Services\MessageBus;
 use Interop\Container\ContainerInterface;
 use League\Tactician\CommandBus as TacticianCommandBus;
 use Reformo\Common\Services\MessageBus\Interfaces\CommandBus as CommandBusInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 
 class CommandBusFactory implements FactoryInterface
 {
